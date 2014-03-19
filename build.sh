@@ -10,6 +10,8 @@ do
         then
             ln -s ../$t $tgt
         fi
+    else
+        ln -s ../$t $tgt
     fi
 done
 ln -s ../_Makefile build/Makefile
