@@ -3,7 +3,14 @@ BUILDDIR=build
 mkdir $BUILDDIR
 for t in {*.tex,Variables.ini,txt}
 do
-    ln -s ../$t build/$t
+    tgt=build/$t
+    if [ -d $tgt ]
+    then
+        if [ ! -L $tgt ]
+        then
+            ln -s ../$t $tgt
+        fi
+    fi
 done
 ln -s ../_Makefile build/Makefile
 cd $BUILDDIR
