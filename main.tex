@@ -1,0 +1,43 @@
+\input{preamble}
+%\addbibresource{main.bib}
+
+%% Global Last Commands
+\usepackage[capitalise,noabbrev]{cleveref} % <--- Needs to be loaded late (see doc)
+
+\providecommand{\projecttitle}{Stopped flow}
+\hypersetup{%
+  pdfkeywords={stopped flow},%
+  pdfauthor={Björn Dahlgren},%
+  pdftitle={KD1080 \projecttitle}%
+}
+
+
+\author[1]{Björn Dahlgren (\texttt{\href{mailto:bda@kth.se}{bda@kth.se}})}
+\affil[1]{School of Chemical Science and Engineering, Applied Physical Chemistry, KTH}
+
+\title{\projecttitle}
+
+\begin{document}
+  % \begin{abstract}
+  %   \input{txt/05_abstract}
+  % \end{abstract}
+  
+  \begin{titlepage}
+    \maketitle
+  \end{titlepage}
+  
+  \input{txt/10_introduction}
+  \input{txt/20_experimental}
+  \input{txt/30_results-discussion}
+  \input{txt/40_conclusions}
+
+  % How to include references (biblatex vs. bibtex)
+  % \bibliography{main}
+  \printbibliography
+\end{document}
+
+%%% mode: latex
+%%% coding: utf-8
+%%% TeX-master: t
+%%% LaTeX-command: "pdflatex -shell-escape"
+%%% End:

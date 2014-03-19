@@ -1,0 +1,6 @@
+This is a version controlled repository for LaTeX docuements.
+On *nix machines build pdf as follows:
+
+    ./build.sh
+
+It will render your docuement in build/ by default.
