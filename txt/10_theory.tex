@@ -1,0 +1,143 @@
+\section{Teori}
+\label{sec:teori}
+I denna laboration skall ni studera den bimolekylära reaktionen mellan
+järn(III) joner och thiocyanat joner som bilder thiocyanatojärn(II):
+
+\begin{center}
+\begin{tabular}{cc}
+  \ce{Fe^3+ + SCN- <=>>[k_f][k_b] FeSCN^2+} & K=\SI{0.0}{\per\Molar}
+\end{tabular}
+\end{center}
+
+\ce{FeSCN^2+} är starkt rödfärgat ($\lambda_{max}=\SI{450}{\nm}$) medan de andra reaktanterna är
+färglösa. (\ce{Fe^3+} har en extinktions koefficient på XXX \si{\per\Molar\per\cm}).
+
+Spektrofotometern registrerar transmissionen ($T = I/I_0$) vilket omvanldas till absorbans enligt:
+
+\begin{equation}
+  \label{eq:lambert-beer}
+  A = -\log_{10}(\frac{I}{I_0})
+\end{equation}
+
+Lambert-Beer's lag visar att absobansen är linjärt beroende av koncentrationen av
+det absorberande specien (det färgade ämnet).
+
+\begin{equation}
+  \label{eq:lambert-beer}
+  A = \epsilon c l
+\end{equation}
+
+där $A$ är absorbansen, $\epsilon$ extinktionskoefficienten vid den valda våglängden och $l$ kyvettlängden.
+
+Uppgifterna som skall lösas i denna laboration är:
+\begin{enumerate}
+\item $k_f$ för 8 olika temperaturer
+\item Från temperaturberoendet för $k_f$ bestämma frekvensfaktorn och
+  aktiverings energin enligt Arrhenius ekvation.
+\item Frivillig extra uppgift: istället för aktiverings energin kan vi försöka 
+  uppskatta $\Delta H^{\ddag}$ och $\Delta S^{\ddag}$ från transition state teorin
+  (se bilaga X).
+\end{enumerate}
+
+\begin{equation}
+  \label{eq:scn-rate}
+  \frac{d[\ce{SCN-}]}{dt} = k_b[\ce{FeSCN^2+}] - k_f[\ce{Fe^3+}][\ce{SCN-}]
+\end{equation}
+
+Frågan är nu hur man skall bestämma $k_f$. För det första behöver vi ett funktionsuttryck
+för [\ce{FeSCN^2+}]. Enklast är kanske i detta skede konstatera att under antagandet att
+vi inte har någon mängd \ce{FeSCN^2+} vid reaktionens start gäller:
+
+\begin{equation}
+  \label{eq:fescn-scn-rel}
+  [\ce{FeSCN^2+}] = [\ce{SCN-}]_0 - [\ce{SCN-}]
+\end{equation}
+
+vilket låter oss fokusera på att lösa \cref{eq:scn-rate}.
+
+Detta kan göras med olika grad av förenklingar. Låt oss studera dem nedan.
+
+\subsection{Pseudo första ordningens reaktion}
+Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
+är den dominerande. Vidare har vi valt att låta $[\ce{Fe^3+}]_0=10[\ce{SCN-}]_0$ vilket
+betyder att koncentrationen järn(III) är ganska konstant under reaktionens gång. Om vi
+utnyttjar dessa antaganden och förenklar \cref{eq:scn-rate} till:
+
+\begin{equation}
+  \label{eq:scn-pseudo-rate}
+  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}][\ce{SCN-}] = -k'[\ce{SCN-}] \\
+\end{equation}
+
+där $k' = k_f[\ce{Fe^3+}]$. \cref{eq:scn-rate} har en enkel lösning:
+
+\begin{align}
+  \int_{[\ce{SCN-}]_0}^{[\ce{SCN-}]_{p}} \frac{dx}{x} &= -k'\int_0^{t}d\tau \\
+  \Big[ \log{x} \Big]_{[\ce{SCN-}]_0}^{[\ce{SCN-}]_{p}} &= -k't \\
+  \log{[\ce{SCN-}]_{p}} - \log{[\ce{SCN-}]_{0}} &= -k't\\
+  [\ce{SCN-}]_{p} &= [\ce{SCN-}]_0e^{-k't}
+\end{align}
+
+där $[\ce{SCN-}]_{p}$ betecknar pseudo-första ordningens approximation
+av thiocyanat jonskoncentrationen vid tiden $t$, vilket från \cref{eq:fescn-scn-rel}
+ger:
+
+\begin{equation}
+  [\ce{FeSCN^2+}]_{p}=[\ce{SCN-}]_0(1 - e^{-k't})
+\end{equation}
+
+Se bilaga \# för ett räkne exempel där vi manuellt beräknar k' med linjär regression
+från absorbans data.
+
+\subsection{Irreversibel bimolekylär kinetik}
+En mer korrekt behandling är att beakta tidsberoendet av [\ce{Fe^3+}].
+För enkelhetens skull betraktar vi fortfarande endast den framåt gående reaktionen.
+För läslighetens skull betecknar vi från och med nu [\ce{FeSCN^2+}], [\ce{Fe^3+}] 
+och [\ce{SCN-}] och  med variablerna $x$, $y$ och $z$ och de initiala koncentrationerna
+med respektive versaler $X$, $Y$ och $Z$. Vi kan då beskriva koncentrationerna vid
+tiden $t$ enligt:
+\begin{center}
+\begin{tabular}{rccccc}
+        & \ce{Fe^3+} & + & \ce{SCN-} & \ce{<=>>[k_f][k_b]} & \ce{FeSCN^2+} \\
+  $t=0$ &     $Y$    &   &    $Z$    &                    &      $X$        \\
+  $t>0$ &  $y=Y+X-x$ &   & $z=Z+X-x$ &                    &      $x$        \\
+  $t>0, X=0$ &  $y=Y+x$ &   & $z=Z-x$ &                    &      $x$        \\
+\end{tabular}
+\end{center}
+
+härledningarna nedan baseras - för läslighets skull - på sista raden, $X=0$.
+Vi ser att vi endast har en beroende variabel och \cref{eq:scn-rate} ger vid
+försummandet av bakåtreaktionen följande integral:
+
+\input{derivations/irrev_binary_1}
+% \begin{align}
+%   \int_0^x \frac{d\chi}{(Y-\chi)(Z-\chi)} &= k_f\int_0^{t}d\tau \\
+%   \frac{1}{Y-Z} \Big[ \log{\left( \frac{Y-\chi}{Z-\chi} \right)} \Big]_0^x &= k_ft
+% \end{align}
+
+nästa steg är att slå upp integralen i exmepelvis BETA Handbook of
+Mathematics, lös för hand med partialbråks uppdelning  eller använda
+ett CAS\footnote{  Computer Algebra System - exempelvis Mathematica,
+  Maple, Maxima, SymPy m.fl.}. Friställandet av vår beroende variabel $x$
+till ett explicit uttryck i den oberoende variabeln $t$ blir: 
+
+\input{derivations/irrev_binary_2}
+% \begin{align}
+%   \log{\left( \frac{Y-x}{Z-x} \right)} &= k_ft(Y-Z) + \log{\left( \frac{Y}{Z} \right)} \\
+%   \frac{Y-x}{Z-x} &= \frac{Y}{Z}\underbrace{e^{k_ft(Y-Z)}}_{=C} \\
+%   Z(Y-x) &= (Z-x)YC \\
+%   (YC-Z)x &= ZY(C-1) \\
+%   x &= \frac{ZY(C-1)}{YC-Z} \\
+%   x &= \frac{ZY(e^{k_ft(Y-Z)}-1)}{Ye^{k_ft(Y-Z)}-Z}
+% \end{align}
+
+\subsection{Reversibel bimolekylär kinetik}
+
+\input{derivations/rev_binary_1}
+\input{derivations/rev_binary_2}
+\input{derivations/rev_binary_3}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
