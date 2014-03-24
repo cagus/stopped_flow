@@ -57,7 +57,7 @@ vilket låter oss fokusera på att lösa \cref{eq:scn-rate}.
 
 Detta kan göras med olika grad av förenklingar. Låt oss studera dem nedan.
 
-\subsection{Pseudo första ordningens reaktion}
+\subsection{Irreversibel pseudo första ordningens reaktion}
 Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
 är den dominerande. Vidare har vi valt att låta $[\ce{Fe^3+}]_0=10[\ce{SCN-}]_0$ vilket
 betyder att koncentrationen järn(III) är ganska konstant under reaktionens gång. Om vi
@@ -87,6 +87,15 @@ ger:
 
 Se bilaga \# för ett räkne exempel där vi manuellt beräknar k' med linjär regression
 från absorbans data.
+
+\subsection{Reversibel pseudo första ordningens reaktion}
+Ett steg mot en mer korrekt beskrivning är att även beakta bakåt
+reaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som konstant). Priset
+vi får betala är att vi inte längre kan använda oss av linjär regression.
+Härledningen blir:
+\input{derivations/rev_unary_1}
+
+
 
 \subsection{Irreversibel bimolekylär kinetik}
 En mer korrekt behandling är att beakta tidsberoendet av [\ce{Fe^3+}].
