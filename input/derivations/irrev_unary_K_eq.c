@@ -1,1 +1,0 @@
-return_val = Z*(1 - exp(-Y*k_f*t));

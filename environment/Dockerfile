@@ -7,3 +7,8 @@ RUN apt-get update && \
     texlive-latex-extra python-pygments && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && \
+    apt-get --quiet --assume-yes install biber python-numpy \
+    python-scipy python-mako python-sympy cython gcc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

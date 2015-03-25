@@ -6,29 +6,36 @@ järn(III) joner och thiocyanat joner som bildar thiocyanatojärn(II):
 \begin{center}
 \begin{tabular}{ccc}
   \ce{Fe^3+ + SCN- <=>>[k_f][k_b] FeSCN^2+} & %
-    $\log_{10} \left( \beta_1(I=\SIrange{1.0}{1.2}{\molar}) /%
-    \si{\per\Molar} \right) = \num{2.11(4)}$ & %
-    $\Delta H_1 = \SI{-6.7}{\kilo\joule\per\mole}$
+    $\log_{10} \left( \beta_1 %
+     % (I=\SIrange{1.0}{1.2}{\molar}) %
+    / \si{\per\Molar} \right) = \num{2.11(4)}$ %
+  % & $\Delta H_1 = \SI{-6.7}{\kilo\joule\per\mole}$
 \end{tabular}
 \end{center}
 data för reaktionen är från Referens\cite{bahta_critical_1997}.
 
 \ce{FeSCN^2+} är starkt rödfärgat ($\lambda_{max}=\SI{450}{\nm}$) medan de andra reaktanterna är
-färglösa. (\ce{Fe^3+} har en extinktions koefficient på XXX
-\si{\per\Molar\per\cm} vid \SI{-999}{\nm}).
+färglösa.
+% (\ce{Fe^3+} har en extinktions koefficient på XXX
+% \si{\per\Molar\per\cm} vid \SI{-999}{\nm}).
 
 \subsection{Spektrofotometri}
-Spektrofotometern registrerar transmissionen ($T = I/I_0$) 
-vilket omvandlas till absorbans enligt:
+Spektrofotometern registrerar transmissionen $T$:
 
 \begin{equation}
-  \label{eq:lambert-beer}
-  A = -\log_{10}(\frac{I}{I_0})
+  T = I/I_0
+\end{equation}
+där $I$ är itensiteten av den strålen som går genom vårt prov
+och $I_0$ är intensiteten av strålen som går genom vårt referensprov.
+Absorbansen $A$ ges enligt:
+
+\begin{equation}
+  \label{eq:absorbance}
+  A = -\log_{10}T
 \end{equation}
 
 Lambert-Beer's lag ger ett linjärt förhållande mellan absorbans och
-koncentrationen av det absorberande ämnet (i vårt fall vårt färgade
-jon-komplex). 
+koncentrationen av det absorberande ämnet (i vårt fall vårt färgade jon-komplex). 
 
 \begin{equation}
   \label{eq:lambert-beer}
@@ -36,7 +43,8 @@ jon-komplex).
 \end{equation}
 
 där $A$ är absorbansen, $\epsilon$ extinktionskoefficienten vid den valda
-våglängden och $l$ kyvettlängden. 
+våglängden och $l$ kyvettlängden och $c$ concentrationen av det
+absorberande ämnet. 
 
 \subsection{Hastighetsuttryck}
 För läslighetens skull betecknar vi från och med nu [\ce{FeSCN^2+}], [\ce{Fe^3+}] 
@@ -48,18 +56,22 @@ härledningarna nedan baseras - för läslighets skull - på sista raden,
 $X=0$, vilket motsvarar förhållandena i våra stopped flow försök (vi har
 idealt ingen produkt innan mätning).
 
-Ert mål är att genom kurvpassning bestämma $k_f$ för ett antal temperaturer.
+Ert mål är att genom kurvanpassning bestämma $k_f$ för ett antal temperaturer.
 Man kan härleda ett explicit analytiskt uttryck för koncentrationen
 av \ce{FeSCN^2+} genom att integrera den ordinära differential ekvation
 som beskriver dess tidsberoende. Vi kan välja att beskriva denna med
 olika grad av förenklingar.
 \begin{description}
 \item[Irreversibel] \hfill \\
-  eftersom jämvikten är förskjuten kan vi ignorera
-  bakåtreaktionen för att få ett enklare hastighetsuttryck.
-\item[Pseduo första ordningen] \hfill \\
-  eftersom vi har ett överskott av järn kan vi anta dess koncentration är
-  approximativt konstant under reaktionens gång och att $k' = k_f[\ce{Fe^3+}]$
+  Om en jämvikt är kraftigt förskjuten mot produkt kommer
+  bakåtreaktionen vara av liten betydelse och kan därmed
+  ignoreras i behandlingen av kinetiken för att få
+  ett enklare hastighetsuttryck.
+\item[Pseduo första ordningen] \hfill \\ %
+  Ifall initialkoncentrationen av en reaktant är mycket större än den andra
+  kan reaktanten i överskott approximeras som konstant under reaktionens
+  gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
+  hastighets konstant $k' = k_f[\ce{Fe^3+}]$
 \end{description}
 
 \input{tab/rate_eqs}
@@ -88,7 +100,7 @@ följer härledningar för vart och ett av dessa fyra fall.
 
 \subsubsection{Irreversibel pseudo första ordningens reaktion}
 \label{sec:irrev_unary}
-Den enklaste modell vi kan ansätta (och även den med störst )
+Detta är den enklaste modell vi kan ansätta (och även den med störst fel).
 Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
 är den dominerande. Vidare har vi valt att låta $[\ce{Fe^3+}]_0=10[\ce{SCN-}]_0$ vilket
 betyder att koncentrationen järn(III) är ganska konstant under reaktionens gång. Om vi
@@ -103,103 +115,84 @@ av \ce{SCN-}:
 där $k' = k_f[\ce{Fe^3+}]$. \cref{eq:scn-pseudo-rate} har en enkel lösning:
 
 \input{derivations/irrev_unary_1}
-% \begin{align}
-%   \int_{[\ce{SCN-}]_0}^{[\ce{SCN-}]_{p}} \frac{dx}{x} &= -k'\int_0^{t}d\tau \\
-%   \Big[ \log{x} \Big]_{[\ce{SCN-}]_0}^{[\ce{SCN-}]_{p}} &= -k't \\
-%   \log{[\ce{SCN-}]_{p}} - \log{[\ce{SCN-}]_{0}} &= -k't\\
-%   [\ce{SCN-}]_{p} &= [\ce{SCN-}]_0e^{-k't}
-% \end{align}
-
-där $[\ce{SCN-}]_{p}$ betecknar pseudo-första ordningens approximation
-av thiocyanat jonskoncentrationen vid tiden $t$, vilket från \cref{eq:fescn-scn-rel}
-ger:
-
-\begin{equation}
-  [\ce{FeSCN^2+}]_{p}=[\ce{SCN-}]_0(1 - e^{-k't})
-\end{equation}
-
-Se bilaga \# för ett räkne exempel där vi manuellt beräknar k' med linjär regression
-från absorbans data.
 
 \subsubsection{Reversibel pseudo första ordningens reaktion}
 \label{sec:rev_unary}
-Ett steg mot en mer korrekt beskrivning är att även beakta bakåt
-reaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som konstant). Priset
-vi får betala är att vi inte längre kan använda oss av linjär regression.
-Härledningen blir:
+Ett steg mot en mer korrekt beskrivning är att även beakta
+bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
+konstant). Härledningen är analog och blir:
 \input{derivations/rev_unary_1}
 
 
 
 \subsubsection{Irreversibel bimolekylär kinetik}
 \label{sec:irrev_binary}
-En mer korrekt behandling är att beakta tidsberoendet av [\ce{Fe^3+}].
-För enkelhetens skull betraktar vi fortfarande endast den framåt gående reaktionen.
-Vi ser att vi endast har en beroende variabel och \cref{eq:scn-rate} ger vid
-försummandet av bakåtreaktionen följande integral:
+Om vi istället fokuserar på att bättre beskriva effekten av att
+[\ce{Fe^3+}] är tidsberoende får vi en något svårare integral att lösa:
 
 \input{derivations/irrev_binary_1}
-% \begin{align}
-%   \int_0^x \frac{d\chi}{(Y-\chi)(Z-\chi)} &= k_f\int_0^{t}d\tau \\
-%   \frac{1}{Y-Z} \Big[ \log{\left( \frac{Y-\chi}{Z-\chi} \right)} \Big]_0^x &= k_ft
-% \end{align}
 
-nästa steg är att lösa integralen. Det kan göras exempelvis genom att slå
-upp integralen i BETA Handbook of Mathematics, för hand med partialbråks
+Den primitiva funktionen kan vi erhålla genom att slå upp den i ``BETA Handbook of
+Mathematics'', integrera för hand med partialbråks 
 uppdelning eller använda ett CAS\footnote{  Computer Algebra System -
   exempelvis Mathematica, Maple, Maxima, SymPy m.fl.}. Friställandet av
 vår beroende variabel $x$ till ett explicit uttryck i den oberoende
 variabeln $t$ blir:  
 
 \input{derivations/irrev_binary_2}
-% \begin{align}
-%   \log{\left( \frac{Y-x}{Z-x} \right)} &= k_ft(Y-Z) + \log{\left( \frac{Y}{Z} \right)} \\
-%   \frac{Y-x}{Z-x} &= \frac{Y}{Z}\underbrace{e^{k_ft(Y-Z)}}_{=C} \\
-%   Z(Y-x) &= (Z-x)YC \\
-%   (YC-Z)x &= ZY(C-1) \\
-%   x &= \frac{ZY(C-1)}{YC-Z} \\
-%   x &= \frac{ZY(e^{k_ft(Y-Z)}-1)}{Ye^{k_ft(Y-Z)}-Z}
-% \end{align}
+
+vi ser att det detta explicita uttrycket inte längre kan linjäriseras
+vilket gör en regression mer avancerad.
 
 \subsubsection{Reversibel bimolekylär kinetik}
+Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \label{sec:rev_binary}
 \input{derivations/rev_binary_1}
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
 
-\subsection{Transition state teorin}
+\subsection{Arrhenius ekvation}
 En termisk reaktion\footnote{En termisk reaktion är en vars hastighet begränsas av den termiska
 energin hos molekylerna. Ett motexemepel är diffusionskontrollerade
-radikalreaktioner som har en försumbar reaktionsbarriär.} kan utifrån
-statistisk termodynamik och antagandet om ett transition state (eller
+radikalreaktioner som har en försumbar reaktionsbarriär.} har en
+hastigetskonstant som är exponentiellt beroende på den (reciproka) temperaturen.
 aktiverat komplex) antas ha en hastighetskonstant enligt:
 
-\begin{align}
-  \label{eq:K_TS}
-  K_{TS} &=\frac{[TS]}{[A][B]}=e^{-\frac{\Delta G^{\ddag}}{RT}} \\
-  \label{eq:k_tst}
-  k_{reaction} &=\kappa\frac{k_{B}T}{h}K_{TS}
-\end{align}
-
-där $\kappa$ är den så kallade transmissionkoefficienten sätts ofta till
-1 (ibland 0.5) och betecknar hur stor andel av de molekyler som når TS
-fortsätter och bildar produkt.
-
-Gibbs fria energi är:
 \begin{equation}
-  \label{eq:gibbs}
-  \Delta G = \Delta H - T\Delta S
+  \label{eq:arrhenius}
+  k = e^{-\frac{E_a}{RT}}
 \end{equation}
 
-strikt är $\Delta H$ inte en konstant under reaktionens gång utan
-entalpin påverkas av volymsförändiringen.
-\begin{equation}
-  \label{eq:enthalpy}
-  \Delta H = \Delta U + P\Delta V
-\end{equation}
-För reaktioner i vätskefas är dock detta bidrag väldigt litet (storleks
-ordningen \SI{0.1}{\kilo\joule\per\mole}) och kan därmed förbises.
+där $k$ är hastighetskonstanten, $E_a$ aktiveringsenergin, $R$ den
+allmänna gaskonstanten och $T$ är den (absoluta) temperaturen.
 
+\cref{eq:arrhenius} postulerades 1889 av Svante Arrhenius och är ett
+empiriskt samband (den förklarar experimentella observationer men saknar
+en underliggande härledning). Tolkningen är att $E_a$ ger
+energiskillnaden mellan det ``aktiverade komplexet'' och reaktanterna för
+en reaktion. Ju större denna energiskillnad är, desto mer termisk energi
+krävs för att nå detta aktiverade komplex som följdaktligen omvandlas
+till prokukter.
+
+Den moderna uppföljaren till Arrhenius ekvation är den s.k. ``transition
+state teorin'' som kan härledas från statistisk termodynamik och ger
+upphov till en mycket snarlik ekvation för hastighetskonstantens
+temperaturberoende. Men i denna laboration nöjer vi oss med att behandla
+våra data enligt Arrhenius ekvation.
+
+\subsection{Primär kinetisk salteffekt}
+På liknande vis som polära lösningsmedel stabiliserar
+solvaterade joner kan spektator joner (joner som inte
+direkt deltar i reaktionen) påverka stabiliteten av våra joner i
+reaktionen. Om stabiliseringen av reaktanter är större än för vårt
+aktiverade komplex kommer den effektiva aktiveringsenergin att stiga med
+ökande jonstyrka och \emph{vice versa}.
+
+Från Debye-Hückel teorin kan den s.k. primära kinetiska
+salteffkten 
+
+
+Laddade specis i en lösning kan stabiliseras av  
 
 %%% Local Variables:
 %%% mode: latex

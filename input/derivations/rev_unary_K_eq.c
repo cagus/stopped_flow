@@ -1,1 +1,0 @@
-return_val = Y*Z*k_f*(1 - exp(-t*(Y*k_f + k_f/K_eq)))/(Y*k_f + k_f/K_eq);
