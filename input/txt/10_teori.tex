@@ -1,0 +1,164 @@
+\section{Teori}
+\label{sec:teori}
+Laborationen introducerar ingen ny teori. Föreläsningarna samt
+kurslitteratur för kursen innehåller det ni behöver. Men som ledning för
+den numeriska analysen ges här fullständiga härledningar av
+koncentrationernas tidsberoende för olika grad av förenkling av
+hastighetsuttrycken.
+
+\subsection{Hastighetsuttryck}
+För läslighetens skull betecknar vi från och med nu [\ce{FeSCN^2+}],
+[\ce{Fe^3+}] och [\ce{SCN-}] och med variablerna $x$, $y$ och $z$ och de
+initiala koncentrationerna med respektive versaler $X$, $Y$ och $Z$. Vi
+kan då beskriva koncentrationerna vid tiden $t$ enligt:
+
+\input{tab/conc}
+
+härledningarna nedan baseras - för läslighets skull - på sista raden,
+$X=0$, vilket motsvarar förhållandena i våra stopped flow försök (vi har
+idealt ingen produkt innan mätning).
+
+Ert mål är att genom kurvanpassning med efterföljande ekvationslösning
+bestämma $k_f$ för ett antal temperaturer.
+
+Man kan härleda ett explicit analytiskt uttryck för koncentrationen
+av \ce{FeSCN^2+} genom att integrera den ordinära differentialekvation
+som beskriver dess tidsberoende. Vi kan välja att beskriva denna med
+olika grad av förenklingar.
+\begin{description}
+\item[Irreversibel] \hfill \\
+  Om en jämvikt är kraftigt förskjuten mot produkt kommer
+  bakåtreaktionen vara av liten betydelse och kan därmed
+  ignoreras i behandlingen av kinetiken för att få
+  ett enklare hastighetsuttryck.
+\item[Pseduo första ordningen] \hfill \\ %
+  Ifall initialkoncentrationen av en reaktant är mycket större än den andra
+  kan reaktanten i överskott approximeras som konstant under reaktionens
+  gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
+  hastighets konstant $k' = k_f[\ce{Fe^3+}]$
+\end{description}
+
+\input{tab/rate_eqs}
+
+I \cref{tab:rate_eqs} ges olika uttryck för $\frac{dx}{dt}$. I
+\cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary} 
+följer härledningar för vart och ett av dessa fyra fall. 
+
+% \begin{equation}
+%   \label{eq:scn-rate}
+%   \frac{d[\ce{SCN-}]}{dt} = k_b[\ce{FeSCN^2+}] - k_f[\ce{Fe^3+}][\ce{SCN-}]
+% \end{equation}
+
+% Frågan är nu hur man skall bestämma $k_f$. För det första behöver vi ett funktionsuttryck
+% för [\ce{FeSCN^2+}]. Enklast är kanske i detta skede konstatera att under antagandet att
+% vi inte har någon mängd \ce{FeSCN^2+} vid reaktionens start gäller:
+
+% \begin{equation}
+%   \label{eq:fescn-scn-rel}
+%   [\ce{FeSCN^2+}] = [\ce{SCN-}]_0 - [\ce{SCN-}]
+% \end{equation}
+
+% vilket låter oss fokusera på att lösa \cref{eq:scn-rate}.
+
+% Detta kan göras med olika grad av förenklingar. Låt oss studera dem nedan.
+
+\subsubsection{Irreversibel pseudo första ordningens reaktion}
+\label{sec:irrev_unary}
+Detta är den enklaste modell vi kan ansätta (och även den med störst fel).
+Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
+är den dominerande. Vidare har vi valt att låta $[\ce{Fe^3+}]_0=10[\ce{SCN-}]_0$ vilket
+betyder att koncentrationen järn(III) är ganska konstant under reaktionens gång. Om vi
+utnyttjar dessa antaganden får vi ett förenklat uttryck för utvecklingen
+av \ce{SCN-}:
+
+\begin{equation}
+  \label{eq:scn-pseudo-rate}
+  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}][\ce{SCN-}] = -k'[\ce{SCN-}]
+\end{equation}
+
+där $k' = k_f[\ce{Fe^3+}]$. \cref{eq:scn-pseudo-rate} har en enkel lösning:
+
+\input{derivations/irrev_unary_1}
+
+\subsubsection{Reversibel pseudo första ordningens reaktion}
+\label{sec:rev_unary}
+Ett steg mot en mer korrekt beskrivning är att även beakta
+bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
+konstant). Härledningen är analog och blir:
+\input{derivations/rev_unary_1}
+
+
+
+\subsubsection{Irreversibel bimolekylär kinetik}
+\label{sec:irrev_binary}
+Om vi istället fokuserar på att bättre beskriva effekten av att
+[\ce{Fe^3+}] är tidsberoende får vi en något svårare integral att lösa:
+
+\input{derivations/irrev_binary_1}
+
+Den primitiva funktionen kan vi erhålla genom att slå upp den i ``BETA Handbook of
+Mathematics'', integrera för hand med partialbråks 
+uppdelning eller använda ett CAS\footnote{  Computer Algebra System -
+  exempelvis Mathematica, Maple, Maxima, SymPy m.fl.}. Friställandet av
+vår beroende variabel $x$ till ett explicit uttryck i den oberoende
+variabeln $t$ blir:  
+
+\input{derivations/irrev_binary_2}
+
+vi ser att det detta explicita uttrycket inte längre kan linjäriseras
+vilket gör en regression mer avancerad.
+
+\subsubsection{Reversibel bimolekylär kinetik}
+Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
+\label{sec:rev_binary}
+\input{derivations/rev_binary_1}
+\input{derivations/rev_binary_2}
+\input{derivations/rev_binary_3}
+
+\subsection{Arrhenius ekvation}
+En termisk reaktion\footnote{En termisk reaktion är en vars hastighet begränsas av den termiska
+energin hos molekylerna. Ett motexemepel är diffusionskontrollerade
+radikalreaktioner som har en försumbar reaktionsbarriär.} har en
+hastigetskonstant som är exponentiellt beroende på den (reciproka) temperaturen.
+aktiverat komplex) antas ha en hastighetskonstant enligt:
+
+\begin{equation}
+  \label{eq:arrhenius}
+  k = e^{-\frac{E_a}{RT}}
+\end{equation}
+
+där $k$ är hastighetskonstanten, $E_a$ aktiveringsenergin, $R$ den
+allmänna gaskonstanten och $T$ är den (absoluta) temperaturen.
+
+\cref{eq:arrhenius} postulerades 1889 av Svante Arrhenius och är ett
+empiriskt samband (den förklarar experimentella observationer men saknar
+en underliggande härledning). Tolkningen är att $E_a$ ger
+energiskillnaden mellan det ``aktiverade komplexet'' och reaktanterna för
+en reaktion. Ju större denna energiskillnad är, desto mer termisk energi
+krävs för att nå detta aktiverade komplex som följdaktligen omvandlas
+till prokukter.
+
+Den moderna uppföljaren till Arrhenius ekvation är den s.k. ``transition
+state teorin'' som kan härledas från statistisk termodynamik och ger
+upphov till en mycket snarlik ekvation för hastighetskonstantens
+temperaturberoende. Men i denna laboration nöjer vi oss med att behandla
+våra data enligt Arrhenius ekvation.
+
+\subsection{Primär kinetisk salteffekt}
+På liknande vis som polära lösningsmedel stabiliserar
+solvaterade joner kan spektator joner (joner som inte
+direkt deltar i reaktionen) påverka stabiliteten av våra joner i
+reaktionen. Om stabiliseringen av reaktanter är större än för vårt
+aktiverade komplex kommer den effektiva aktiveringsenergin att stiga med
+ökande jonstyrka och \emph{vice versa}.
+
+Från Debye-Hückel teorin kan den s.k. primära kinetiska
+salteffkten 
+
+
+Laddade specis i en lösning kan stabiliseras av  
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
