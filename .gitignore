@@ -1,3 +1,13 @@
 output/
 */*/*.pyc
 */*/*.ipynb_checkpoints
+
+*/.~lock.*
+
+# auctex generated files:
+input/_region_.*
+input/auto
+input/prv_*.log
+input/*/_region_.*
+input/*/auto
+input/*/prv_*.log

@@ -1,7 +1,8 @@
-\input{inc/preamble}
+\input{inc/preamble_early}
+\usepackage{xr-hyper} % needs to be loaded before hyperref
+\input{inc/preamble_mid}
 \addbibresource{stopped_flow.bib}
 
-\usepackage{xr}
 \externaldocument{supp_mater}
 
 %% Global Last Commands
@@ -15,14 +16,18 @@
   \begin{titlepage}
     \maketitle
   \end{titlepage}
-  
-  \input{txt/05_inledning}
-  \input{txt/10_teori}
-  \input{txt/20_utrustning}
-  \input{txt/30_analys}
-  \input{txt/35_instudering}
-  \input{txt/40_rapport}
-  \input{txt/50_referenser}
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \pagebreak
+
+  \input{txt/10_inledning}
+  \input{txt/20_teori}
+  \input{txt/30_utrustning}
+  \input{txt/40_analys}
+  \input{txt/50_instudering}
+  \input{txt/60_rapport}
+  \printbibliography
 
 \end{document}
 

@@ -115,48 +115,29 @@ Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
 
-\subsection{Arrhenius ekvation}
-En termisk reaktion\footnote{En termisk reaktion är en vars hastighet begränsas av den termiska
-energin hos molekylerna. Ett motexemepel är diffusionskontrollerade
-radikalreaktioner som har en försumbar reaktionsbarriär.} har en
-hastigetskonstant som är exponentiellt beroende på den (reciproka) temperaturen.
-aktiverat komplex) antas ha en hastighetskonstant enligt:
 
-\begin{equation}
-  \label{eq:arrhenius}
-  k = e^{-\frac{E_a}{RT}}
-\end{equation}
+\subsection{Hastighetskontanter}
+Hastighetskonstanter är verkliga konstanter för en given temperatur och
+jonstyrka. I era försök kommer dessa parametrar att variera och det är
+upp till er att behandla dessa effekter enligt de modeller som
+behandlas i kursen.
 
-där $k$ är hastighetskonstanten, $E_a$ aktiveringsenergin, $R$ den
-allmänna gaskonstanten och $T$ är den (absoluta) temperaturen.
+\subsection{Förenklingar}
+I denna laboration antar beaktar vi endast reaktionen för bildning av
+monothiocyanatojärn(II). Men i verkligheten förekommer även följande
+komplex: 
 
-\cref{eq:arrhenius} postulerades 1889 av Svante Arrhenius och är ett
-empiriskt samband (den förklarar experimentella observationer men saknar
-en underliggande härledning). Tolkningen är att $E_a$ ger
-energiskillnaden mellan det ``aktiverade komplexet'' och reaktanterna för
-en reaktion. Ju större denna energiskillnad är, desto mer termisk energi
-krävs för att nå detta aktiverade komplex som följdaktligen omvandlas
-till prokukter.
+\begin{center}
+  \begin{tabular}{ll}
+    \ce{FeSCN^2+ + SCN- <=> Fe(SCN)_2^+}  & K=\SI{4.9}{\per\Molar} \\
+    \ce{Fe(SCN)_2^+ + SCN- <=> Fe(SCN)3}  & K=\SI{5.1}{\per\Molar} \\
+    \ce{Fe^3+ + H2O <=> FeOH^2+ + H+}     & $\log K = \num{-2.19}$ \\
+    \ce{Fe^3+ + 2H2O <=> Fe2OH4^2- + 2H+} & $\log K = \num{-2.95}$ \\
+  \end{tabular}
+\end{center}
 
-Den moderna uppföljaren till Arrhenius ekvation är den s.k. ``transition
-state teorin'' som kan härledas från statistisk termodynamik och ger
-upphov till en mycket snarlik ekvation för hastighetskonstantens
-temperaturberoende. Men i denna laboration nöjer vi oss med att behandla
-våra data enligt Arrhenius ekvation.
-
-\subsection{Primär kinetisk salteffekt}
-På liknande vis som polära lösningsmedel stabiliserar
-solvaterade joner kan spektator joner (joner som inte
-direkt deltar i reaktionen) påverka stabiliteten av våra joner i
-reaktionen. Om stabiliseringen av reaktanter är större än för vårt
-aktiverade komplex kommer den effektiva aktiveringsenergin att stiga med
-ökande jonstyrka och \emph{vice versa}.
-
-Från Debye-Hückel teorin kan den s.k. primära kinetiska
-salteffkten 
-
-
-Laddade specis i en lösning kan stabiliseras av  
+Hur stora dessa effekter är beror som man ser på [\ce{SCN-}] och pH. Ni
+bör därför ta detta i beaktande när ni väljer era koncentrationer.
 
 %%% Local Variables:
 %%% mode: latex

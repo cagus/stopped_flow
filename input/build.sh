@@ -22,7 +22,7 @@ fi
 
 echo $DIRS
 for d in $DIRS; do
-    cp -r $d $BUILDDIR
+    cp -rau $d $BUILDDIR
     # Loop over directories and look for Makefiles and run them
     if [[ -f $d/Makefile ]]; then
         cd $BUILDDIR/$d
