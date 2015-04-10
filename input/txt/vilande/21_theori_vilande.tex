@@ -1,3 +1,22 @@
+\begin{equation}
+  \label{eq:scn-rate}
+  \frac{d[\ce{SCN-}]}{dt} = k_b[\ce{FeSCN^2+}] - k_f[\ce{Fe^3+}][\ce{SCN-}]
+\end{equation}
+
+Frågan är nu hur man skall bestämma $k_f$. För det första behöver vi ett funktionsuttryck
+för [\ce{FeSCN^2+}]. Enklast är kanske i detta skede konstatera att under antagandet att
+vi inte har någon mängd \ce{FeSCN^2+} vid reaktionens start gäller:
+
+\begin{equation}
+  \label{eq:fescn-scn-rel}
+  [\ce{FeSCN^2+}] = [\ce{SCN-}]_0 - [\ce{SCN-}]
+\end{equation}
+
+vilket låter oss fokusera på att lösa \cref{eq:scn-rate}.
+
+Detta kan göras med olika grad av förenklingar. Låt oss studera dem nedan.
+
+
 \subsection{Arrhenius ekvation}
 En termisk reaktion\footnote{En termisk reaktion är en vars hastighet begränsas av den termiska
 energin hos molekylerna. Ett motexemepel är diffusionskontrollerade

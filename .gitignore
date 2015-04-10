@@ -11,3 +11,7 @@ input/prv_*.log
 input/*/_region_.*
 input/*/auto
 input/*/prv_*.log
+
+
+# output files put back into input for auctex to work
+input/derivations/*.tex

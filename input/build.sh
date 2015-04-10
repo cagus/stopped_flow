@@ -17,7 +17,11 @@ DIRSFILE=${2:-dirs.txt}
 if [[ -f $DIRSFILE ]]; then
     DIRS=$(cat $DIRSFILE)
 else
-    DIRS=$(find . -maxdepth 1 -type d -not -path '.' -not -path '*/\.*' -not -path "*/$BUILDDIR")    
+    DIRS=$(find . -maxdepth 1 -type d \
+        -not -path '.' \
+        -not -path '*/\.*' \
+        -not -path '*_region_*' \
+        -not -path "*/$BUILDDIR")
 fi
 
 echo $DIRS
@@ -32,7 +36,7 @@ for d in $DIRS; do
     fi
 done
 
-TGTS=(*.tex *.bib Variables.ini)
+TGTS=(main.tex supp_mater.tex *.bib Variables.ini)
 echo "${TGTS[@]}"
 for t in "${TGTS[@]}"; do
     tgt=$BUILDDIR/$t
