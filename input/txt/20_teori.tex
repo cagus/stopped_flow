@@ -49,17 +49,18 @@ följer härledningar för vart och ett av dessa fyra fall.
 \label{sec:irrev_unary}
 Detta är den enklaste modell vi kan ansätta (och även den med störst fel).
 Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
-är den dominerande. Vidare har vi valt att låta $[\ce{Fe^3+}]_0=10[\ce{SCN-}]_0$ vilket
-betyder att koncentrationen järn(III) är ganska konstant under reaktionens gång. Om vi
-utnyttjar dessa antaganden får vi ett förenklat uttryck för utvecklingen
-av \ce{SCN-}:
+är den dominerande. Vidare antar vi att $[\ce{Fe^3+}]_0 \gg [\ce{SCN-}]_0$ vilket
+betyder att koncentrationen järn(III) kan approximeras som konstant under
+reaktionens gång. Om vi utnyttjar dessa antaganden får vi ett förenklat
+uttryck för utvecklingen av \ce{SCN-}:
 
 \begin{equation}
   \label{eq:scn-pseudo-rate}
-  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}][\ce{SCN-}] = -k'[\ce{SCN-}]
+  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
 \end{equation}
 
-där $k' = k_f[\ce{Fe^3+}]$. \cref{eq:scn-pseudo-rate} har en enkel lösning:
+där $k' = k_f[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
+hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning: 
 
 \input{derivations/irrev_unary_1}
 
@@ -80,11 +81,11 @@ Om vi istället fokuserar på att bättre beskriva effekten av att
 \input{derivations/irrev_binary_1}
 
 Den primitiva funktionen kan vi erhålla genom att slå upp den i ``BETA Handbook of
-Mathematics'', integrera för hand med partialbråks 
-uppdelning eller använda ett CAS\footnote{  Computer Algebra System -
-  exempelvis Mathematica, Maple, Maxima, SymPy m.fl.}. Friställandet av
-vår beroende variabel $x$ till ett explicit uttryck i den oberoende
-variabeln $t$ blir:  
+Mathematics'', integrera för hand med partialbråksuppdelning eller
+använda ett CAS\footnote{  Computer Algebra System -   exempelvis
+  Mathematica, Maple, Maxima, SymPy m.fl.}. Friställandet av vår beroende
+variabel $x$ till ett explicit uttryck i den oberoende variabeln $t$
+blir:
 
 \input{derivations/irrev_binary_2}
 
@@ -102,11 +103,11 @@ Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \subsection{Hastighetskontanter}
 Hastighetskonstanter är verkliga konstanter för en given temperatur och
 jonstyrka. I era försök kommer dessa parametrar att variera och det är
-upp till er att behandla dessa effekter enligt de modeller som
-behandlas i kursen.
+upp till er att behandla dessa effekter enligt någon av de modeller som
+behandlats i kursen.
 
 \subsection{Förenklingar}
-I denna laboration antar beaktar vi endast reaktionen för bildning av
+I denna laboration beaktar vi endast reaktionen för bildning av
 monotiocyanatojärn(II). Men i verkligheten förekommer även följande
 komplex: 
 
@@ -119,7 +120,7 @@ komplex:
   \end{tabular}
 \end{center}
 
-Hur stora dessa effekter är beror som man ser på [\ce{SCN-}] och pH. Ni
+Hur stora dessa effekter är, beror på [\ce{SCN-}] och pH. Ni
 bör därför ta detta i beaktande när ni väljer era koncentrationer.
 
 %%% Local Variables:
