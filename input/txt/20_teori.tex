@@ -14,18 +14,18 @@ kan då beskriva koncentrationerna vid tiden $t$ enligt:
 
 \input{tab/conc}
 
-härledningarna nedan baseras - för läslighets skull - på sista raden,
+Härledningarna nedan baseras -- för läslighets skull -- på sista raden,
 $X=0$, vilket motsvarar förhållandena i våra ``stopped-flow'' försök (vi har
 idealt ingen produkt innan mätning).
 
-Det är från data series för $x(t)$ som ni genom kurvanpassning, med
+Det är från data serier för $x(t)$ som ni genom kurvanpassning, med
 efterföljande ekvationslösning, bestämmer $k_f$ för varje given
 kombination av temperatur och jonstyrka.
 
 Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
 integrera den ordinära differentialekvation som beskriver dess
-tidsberoende. Vi kan välja att beskriva denna med olika grad av
-förenklingar.
+tidsberoende. Reaktionen är av andra ordningen och reversibel, men vi kan
+välja att beskriva denna med olika grad av förenklingar:
 \begin{description}
 \item[Irreversibel] \hfill \\
   Om en jämvikt är kraftigt förskjuten mot produkt kommer
@@ -33,10 +33,10 @@ förenklingar.
   ignoreras i behandlingen av kinetiken för att få
   ett enklare hastighetsuttryck.
 \item[Pseudo första ordningen] \hfill \\ %
-  Ifall initialkoncentrationen av en reaktant är mycket större än den andra
+  Ifall initialkoncentrationen av en reaktant är mycket större än den andra,
   kan reaktanten i överskott approximeras som konstant under reaktionens
   gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
-  hastighets konstant $k' = k_f[\ce{Fe^3+}]$
+  hastighets konstant $k_f' = k_f[\ce{Fe^3+}]$
 \end{description}
 
 \input{tab/rate_eqs}
@@ -48,12 +48,12 @@ följer härledningar för vart och ett av dessa fyra fall.
 
 \subsubsection{Irreversibel pseudo första ordningens reaktion}
 \label{sec:irrev_unary}
-Detta är den enklaste modell vi kan ansätta (och även den med störst fel).
+Denna är den enklaste modell vi kan ansätta (och även den med störst fel).
 Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
 är den dominerande. Vidare antar vi att $[\ce{Fe^3+}]_0 \gg [\ce{SCN-}]_0$ vilket
 betyder att koncentrationen järn(III) kan approximeras som konstant under
 reaktionens gång. Om vi utnyttjar dessa antaganden får vi ett förenklat
-uttryck för utvecklingen av \ce{SCN-}:
+uttryck för tidsutvecklingen av [\ce{SCN-}]:
 
 \begin{equation}
   \label{eq:scn-pseudo-rate}
