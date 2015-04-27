@@ -29,20 +29,24 @@ tidsserier kommer sparas i form av textfiler som ni sparar på USB minne
 som ni själva tar med er till labb.
 
 \subsection{Stamlösningar}
-För att bereda era reaktantlösningar kommer ni ha tillgång till följande
+För att bereda era två reaktantlösningar kommer ni ha tillgång till följande
 stamlösningar:
 
 \begin{itemize}
-\item \SI{1}{\Molar} \ce{NaClO4}
-\item \SI{1}{\Molar} \ce{HClO4}
+\item \SI{2}{\Molar} \ce{NaClO4}
+\item \SI{2}{\Molar} \ce{HClO4}
 \item \SI{100}{\milli\Molar} \ce{KSCN}
-\item \SI{100}{\milli\Molar} \ce{Fe(NO3)3}
+\item \SI{100}{\milli\Molar} \ce{Fe(NO3)3} + \SI{200}{\milli\Molar} \ce{HClO4}
 \end{itemize}
+
+Eftersom blandkammaren inte är perfekt kan det vara bra att försäkra sig
+om att båda reaktantlösningarna får samma jonstyrka och pH.
 
 \subsection{Handhavande}
 \label{sec:handhavande}
 Nedan finner ni en instruktion för handhavandet av
-laborationsutrustningen.
+laborationsutrustningen och programvaran. Enheten för tidsangivelserna är
+\si{\milli\second} i programmet.
 
 \subsubsection{Förberedelser}
 \begin{itemize}
@@ -51,22 +55,30 @@ laborationsutrustningen.
 Starta termostat och lägg i extern termometer.
 \item Kontrollera att kylvattnet är på med hjälp av den röda flödesmätaren.
 \item Sätt på kranvattnet.
-\item Ställ in och invänta rätt temperatur
-OBS! Vid alla mätningar och kalibreringar ska ``Stop'' vara nedtryckt på ``Start/Stop
-Acquisition``. Om programmet stängs av måste kalibreringen (med dest. vatten) göras om,
-tryck därför aldrig på ``Exit''. Undvik att luftbubblor kommer in i kyvetten.
+\item Starta programmet StopFlowSpect på datorn.
+\item Ställ in och invänta rätt temperatur OBS! Vid alla mätningar och
+  kalibreringar ska knappen för ``Start/Stop Acquisition`` vara röd. Om
+  programmet stängs av måste kalibreringen (med dest. vatten) göras om,
+  tryck därför aldrig på ``Exit''. Undvik att luftbubblor kommer in i
+  kyvetten.
 \end{itemize}
 \subsubsection{Kalibrering}
 \begin{itemize}
 \item Ställ ``Integration time'' till 2 ms.
-\item Blockera strålgången med metallplåten. Tryck på ``Dark''. Ta bort metallplåten.
+\item Blockera strålgången med metallplåten. Tryck på ``Dark''. Ta bort
+  metallplåten.
 \item Injicera destillerat vatten. Tryck på ``Ref''.
-\item Kontrollera att transmittansen och absorptionen ser ut som de bör.
-\item Byt sprutor och injicera tillräckligt med reaktantlösning så att komplexet bildas i kyvetten.
-\item Gå in i absorptionstfönstret och bestäm vid vilken våglängd mätningarna ska göras genom
-att välja ``Peak'' i Integral/peak-menyn och ``drag-drop'':a den
-vertikala linjen där ni vill mäta. Beakta att det viktiga måttet vid val
-av våglängd är förhållandet mellan signal och brus (``signal-to-noise-ratio'').
+\item Kontrollera att transmittansen och absorptionen ser ut som de
+  bör: en blå kurva motsvarande spektrumet för lampan och en röd för
+  bakgrundsnivå i mörker.
+\item Byt sprutor och injicera tillräckligt med reaktantlösning så att
+  komplexet bildas i kyvetten.
+\item Gå in i absorptionstfönstret och bestäm vid vilken våglängd
+  mätningarna ska göras genom att välja ``Peak'' i Integral/peak-menyn
+  och ``drag-drop'':a den vertikala linjen där ni vill mäta. Beakta att det
+  viktiga måttet vid val av våglängd är förhållandet mellan signal och brus
+  (``signal-to-noise-ratio''), denna få ni själva bedömma var den är som
+  bäst genom att aktivera ``Start/stop acquisition''.
 \end{itemize}
 \subsubsection{Mätning}
 \begin{itemize}
@@ -76,7 +88,8 @@ av våglängd är förhållandet mellan signal och brus (``signal-to-noise-ratio
 \item Vinkla samtliga T-kranar nedåt.
 \item Injicera snabbt in ny reaktantlösning. Håll kvar greppet i 4 sekunder.
 \item Välj alltid ``Replace'' när frågerutan dyker upp (se till att
-  kopiera och döpa om {\tt data.txt} ifall ni är nöjda med en körning).
+  kopiera och döpa om {\tt data.txt} ifall ni är nöjda med en körning, ni
+  hittar en genväg till filen på skrivbordet).
 \end{itemize}
 
 %%% Local Variables:

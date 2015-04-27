@@ -43,3 +43,33 @@ den brusiga kurvan i \cref{fig:matlab} kunde vi t. ex. från
 skärningspunkten med y-axeln satt startgissningen för $a$ någonstans
 kring 2 och sedan löst ut $b$ ur en approximativ version av \cref{eq:ex} för
 $f(4) \approx 0.5$.
+
+Ett alternativ till att använda funktionen {\tt fit} är att använda {\tt
+  fsolve} vilket kan ansättas att försöka lösa en ekvation för
+residualerna för vår passning:
+
+\matlabcode{matlab/passning2.m}
+
+\begin{terminaloutput}
+>> passning2
+Warning: Trust-region-dogleg algorithm of FSOLVE cannot handle non-square systems; using Levenberg-Marquardt algorithm instead. 
+> In fsolve (line 287)
+  In passning2 (line 43) 
+
+No solution found.
+
+fsolve stopped because the last step was ineffective. However, the vector of function
+values is not near zero, as measured by the default value of the function tolerance. 
+
+<stopping criteria details>
+
+
+result =
+
+    2.0015    2.9760
+\end{terminaloutput}
+
+metoden med {\tt fsolve} producerar likvärdiga passningar men ger
+inga konfidensintervall, samt varnar för det mesta (om inställningar inte
+görs aktivit) att efterfrågade toleranser inte kunde uppnås. Använd den
+metod ni är mest bekväma med: antingen {\tt fsolve} eller {\tt fit}.

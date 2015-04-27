@@ -4,6 +4,9 @@ output/
 
 */.~lock.*
 
+.cache/
+.ipynb_checkpoints/
+
 # auctex generated files:
 input/_region_.*
 input/auto

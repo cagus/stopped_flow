@@ -14,13 +14,13 @@ kan då beskriva koncentrationerna vid tiden $t$ enligt:
 
 \input{tab/conc}
 
-Härledningarna nedan baseras -- för läslighets skull -- på sista raden,
-$X=0$, vilket motsvarar förhållandena i våra ``stopped-flow'' försök (vi har
+Härledningarna nedan baseras -- för läslighets skull -- på sista raden
+ovan ($X=0$), vilket motsvarar förhållandena i våra ``stopped-flow'' försök (vi har
 idealt ingen produkt innan mätning).
 
-Det är från data serier för $x(t)$ som ni genom kurvanpassning, med
-efterföljande ekvationslösning, bestämmer $k_f$ för varje given
-kombination av temperatur och jonstyrka.
+Det är från dataserier för $x(t)$ som ni genom kurvanpassning
+bestämmer $k_f$ för varje given kombination av temperatur och
+jonstyrka.
 
 Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
 integrera den ordinära differentialekvation som beskriver dess
@@ -36,14 +36,16 @@ välja att beskriva denna med olika grad av förenklingar:
   Ifall initialkoncentrationen av en reaktant är mycket större än den andra,
   kan reaktanten i överskott approximeras som konstant under reaktionens
   gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
-  hastighets konstant $k_f' = k_f[\ce{Fe^3+}]$
+  hastighets konstant som implicit inkluderar den högre koncentrationen.
 \end{description}
 
 \input{tab/rate_eqs}
 
-I \cref{tab:rate_eqs} ges olika uttryck för $\frac{dx}{dt}$. I
-\cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary} 
-följer härledningar för vart och ett av dessa fyra fall. 
+I \cref{tab:rate_eqs} ges olika uttryck för $\frac{dx}{dt}$ där vi i
+fallen för pseudo första ordningens uttryck antagit att $[\ce{Fe^3+}]_0
+\gg [\ce{SCN-}]_0$. I
+\cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}
+följer härledningar för vart och ett av dessa fyra fall.
 
 
 \subsubsection{Irreversibel pseudo första ordningens reaktion}
@@ -72,7 +74,10 @@ bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
 konstant). Härledningen är analog och blir:
 \input{derivations/rev_unary_1}
 
-
+Kom ihåg att $k_f$ och $k_b$ inte är oberoende då de skall reproducera
+jämviktskonstanten.
+% Notera att funktionsformen, $f(x) = C_1(1-e^{C_2x})$, är densamma
+% som i \cref{sec:irrev_unary}.
 
 \subsubsection{Irreversibel bimolekylär kinetik}
 \label{sec:irrev_binary}
@@ -90,7 +95,7 @@ blir:
 
 \input{derivations/irrev_binary_2}
 
-vi ser att det detta explicita uttrycket inte längre kan linjäriseras
+vi ser att det detta explicita uttryck inte längre kan linjäriseras
 vilket gör en regression mer avancerad.
 
 \subsubsection{Reversibel bimolekylär kinetik}
@@ -99,6 +104,11 @@ Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \input{derivations/rev_binary_1}
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
+
+Notera att vi antog $4ax < b^2$ vilket går att visa, men lämnas som en
+övning för läsaren.
+% Notera att funktionsformen, $f(x) = C_1\frac{1 - e^{C_2x}}{C_3 -
+%   e^{C_2x}}$, är densamma som i \cref{sec:irrev_binary}.
 
 
 \subsection{Hastighetskontanter}
@@ -110,19 +120,119 @@ behandlats i kursen.
 \subsection{Förenklingar}
 I denna laboration beaktar vi endast reaktionen för bildning av
 monotiocyanatojärn(III). Men i verkligheten förekommer även följande
-komplex: 
+komplex\cite{peintler_improved_2000}: 
 
 \begin{center}
-  \begin{tabular}{ll}
-    \ce{FeSCN^2+ + SCN- <=> Fe(SCN)_2^+}  & K=\SI{4.9}{\per\Molar} \\
-    \ce{Fe(SCN)_2^+ + SCN- <=> Fe(SCN)3}  & K=\SI{5.1}{\per\Molar} \\
-    \ce{Fe^3+ + H2O <=> FeOH^2+ + H+}     & $\log K = \num{-2.19}$ \\
-    \ce{Fe^3+ + 2H2O <=> Fe2OH4^2- + 2H+} & $\log K = \num{-2.95}$ \\
+  \begin{tabular}{@{}l@{}c@{}l@{}c@{}l@{}c@{}lr@{}c@{}l@{}}
+    \ce{FeSCN^2+} & + & \ce{SCN-} & $\rightleftharpoons$ &
+        \ce{Fe(SCN)_2^+} & &  & K &=& \SI{4.9}{\per\Molar} \\
+    \ce{Fe(SCN)_2^+} & + & \ce{SCN-} & $\rightleftharpoons$ &
+        \ce{Fe(SCN)3} & & & K &=& \SI{5.1}{\per\Molar} \\
+    \ce{Fe^3+} & + & \ce{H2O} & $\rightleftharpoons $ & 
+        \ce{FeOH^2+} & + & \ce{H+} & $\log_{10} (\beta_1)$ &=& $\num{-2.774}$ \\
+    \ce{2Fe^3+} & + & \ce{2H2O} & $\rightleftharpoons $ &
+        \ce{Fe2(OH)2^4+} & + & \ce{2H+} & $\log_{10} (\beta_2 / \si{\per\Molar})$&=&$\num{-2.812}$ \\
   \end{tabular}
 \end{center}
 
 Hur stora dessa effekter är, beror på [\ce{SCN-}] och pH. Ni
 bör därför ta detta i beaktande när ni väljer era koncentrationer.
+
+\subsection{Jonstyrkeeffekter}
+Jonstyrkan för en lösning beräknas enligt:
+
+\begin{equation}
+  \label{eq:ionic-strength}
+  I = \frac{1}{2}\sum_i b_iz_i^2
+\end{equation}
+
+där $I$ är jonstyrkan, $b_i$ är molaliteten av ämne $i$ och $z_i$ är
+laddningen för jonen.
+
+På liknande vis som polära lösningsmedel stabiliserar
+solvaterade joner kan åskådarjoner (joner som inte
+direkt deltar i reaktionen) påverka stabiliteten av våra joner och
+jonkomplex i reaktionen. Om stabiliseringen av reaktanter är större än
+för ``transition-state'' kommer den effektiva aktiveringsenergin att
+stiga med ökande jonstyrka och \emph{vice versa}.
+
+Från Debye-Hückel teorin kan den s.k. ``primära kinetiska
+salteffkten'' härledas. Vi utgår från ett ``transition-state''-antagande:
+
+\begin{align}
+  \label{eq:ts}
+  % \ce{Fe^3+ + SCN-} & \ce{<=> [ Fe \dotsb SCN ]^2+ -> FeSCN^2+} \\
+  \ce{A + B} & \ce{<=> TS -> P} \\
+  \label{eq:dpdt-propto}
+  \frac{dP}{dt} &\propto [TS]
+\end{align}
+
+vår hastighetskonstant $k$ för elementarreaktionen:
+\begin{equation}
+  A + B \overset{k}{\rightarrow} P
+\end{equation}
+måste inkludera alla hastighetsförändrande effekter utöver beroendet på
+respektive reaktants koncentration:
+
+\begin{equation}
+  \label{eq:dpdt-explicit}
+  \frac{dP}{dt} = k[A][B]
+\end{equation}
+
+två parametrar som kan ha sådana effekter kan vara temperatur (som
+påverkar $K^\ddagger$) och jonstyrka (påverkar $[TS]$). Steady-state
+halten av vårt transition-state ges av:
+
+\begin{equation}
+  \label{eq:ts-conc}
+  [TS] = \frac{\gamma_A\gamma_B}{\gamma_{TS}}[A][B]K^\ddagger
+\end{equation}
+
+där $\gamma$ är aktivitetskoefficienterna för respektive ämne och ges
+enligt Debye-Hückels gränslag (endast giltig i utspädda lösningar):
+
+\begin{equation}
+  \label{eq:activity}
+  \log_{10}\gamma_i = -Az_i^2\sqrt{\frac{I}{I^\plimsoll}}
+\end{equation}
+
+där $z_i$ är laddningstalet för ämnet $i$ och $A$ är en konstant från Debye-Hückel teorin:
+
+\begin{equation}
+  \label{eq:debye-huckel-a}
+  A = \frac{1}{\ln 10} \frac{F^3}{4\pi N_A}\sqrt{\frac{\rho b^\plimsoll}{2(\varepsilon_0\varepsilon_rRT)^3}}
+\end{equation}
+
+$F$ är Faradays konstant, $N_A$ Avogadros tal, $\varepsilon_r$ den
+relativa permittiviteten för mediumet, $\varepsilon_0$ permitiviteten för
+vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
+\SI{298.15}{\kelvin} är $A = 0.509$ (givet $I^\plimsoll =
+\SI{1}{\mole\per\kg}$).
+
+Logaritmering av \cref{eq:ts-conc} och insättning av \cref{eq:activity}
+ger:
+
+\begin{align}
+  \log_{10}[TS] &= \log_{10}([A][B]K) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A
+                  \sqrt{\frac{I}{I^\plimsoll}} \\
+  \label{eq:log-ts-corr}
+  \log_{10}[TS] &= \log_{10}([A][B]K) + 2z_Az_BA\sqrt{\frac{I}{I^\plimsoll}}
+\end{align}
+
+där vi antagit att laddningen för vårt transition state är summan av
+laddningarna för våra reaktanter.
+Från \cref{eq:dpdt-propto,eq:dpdt-explicit,eq:log-ts-corr} ser vi att jonstyrkeeffekten
+på vår observerade hastighetskonstant har följande samband:
+
+\begin{equation}
+  \label{eq:kinetic-salt}
+  \log_{10} k_{obs} = \log_{10} k^{\circ} + 2Az_az_b\sqrt{\frac{I}{I^\plimsoll}}
+\end{equation}
+
+där $k_{obs}$ är den observerade hastighetskonstanten och $k^{\circ}$ är
+hastighetskonstanten extrapolerad till $I = \SI{0}{\mole\per\kg}$ (ett
+förfarande som gör värden från olika experiment jämförbara med
+varandra).
 
 %%% Local Variables:
 %%% mode: latex

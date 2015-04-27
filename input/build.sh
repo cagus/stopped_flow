@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # Script to build latex document main.tex
 # Arguments
 #   BUILDDIR (optional)

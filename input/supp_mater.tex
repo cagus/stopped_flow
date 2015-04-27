@@ -9,6 +9,7 @@
 \newmintedfile[matlabcode]{matlab}{
 bgcolor=mintedbackground,
 fontfamily=tt,
+fontsize=\footnotesize,
 linenos=true,
 numberblanklines=true,
 numbersep=12pt,
@@ -33,14 +34,18 @@ texcl=false,
 \lstnewenvironment{terminaloutput}{%
   \lstset{backgroundcolor=\color{mintedbackground},
   frame=single,
+  breaklines=true,
   framerule=0pt,
-  basicstyle=\ttfamily,
+  basicstyle=\footnotesize\ttfamily,
   columns=fullflexible}}{}
 
 \renewcommand{\thesection}{B\arabic{section}} % Bilaga
 
 \providecommand{\projecttitle}{Stopped flow - Bilaga}
 \input{inc/set_title_author}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
 
 \begin{document}
  

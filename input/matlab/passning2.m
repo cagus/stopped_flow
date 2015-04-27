@@ -10,8 +10,8 @@
 %    f = @(a, b, x) (a*(x.^b + 1)./(x.^(b+1) + 1));
 %
 % men låt oss låtsas att den är lång och att vi vill uttrycka
-% den i termer av en hjälpfunktion g(p, x) (detta är något ni
-% kan vilja använda er av):
+% den i termer % av en hjälpfunktion g(p, x) (detta är något
+% ni kan vilja använda er av):
 %
 %  g(p, x) = x^p + 1
 
@@ -39,24 +39,13 @@ plot(t, y);
 % Låt oss nu se ifall vi kan genom kurvanpassning
 % bestämma alpha och beta från våra brusiga data i y.
 %
-% Syntax för fit(...) hittar vi i dokumentationen:
-% http://se.mathworks.com/help/curvefit/fit.html
-%
-% Där står det att vi behöver anropa fittype på vår funktion
-% först för att sedan använda det objektet i anrop på fit:
-
-ftyp = fittype(f);
-
-% fit vill ha kolumnvektorer så vi transponerar t och y
-% OBS: den sista vektorn är startgissning för alpha och beta
-% Ifall passningen inte fungerar kan ni prova med 
-% olika startgissningar.
-fitobj = fit(t', y', ftyp, 'StartPoint', [1, 1])
+resfcn = @(params) f(params(1), params(2), t) - y;
+result = fsolve(resfcn, [1.0, 1.0])
 
 % vi kan rita in passningen över våra brusiga data för att
 % få en visualisering av "goodness of fit"
 hold on;
-handle = plot(t, f(fitobj.a, fitobj.b, t));
+handle = plot(t, f(result(1), result(2), t));
 legend('Data', 'Passning');
 
 % ``saveas`` kommandot sparar vår plot:
