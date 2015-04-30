@@ -1,0 +1,35 @@
+\section{Exempelskript för viktad minsta-kvadrat anpassning}
+\label{sec:matlab-wls}
+Nedan finner ni ett Matlab skript ({\tt wls.m}) för viktad
+minsta-kvadrat anspassning av en rät linje till en serie punkter med
+uppskattad osäkerhet för varje spearat punkt.
+
+\matlabcode{matlab/wls.m}
+
+\begin{terminaloutput}
+>> wls
+
+k =
+
+    3.1592
+
+
+m =
+
+    2.6573
+\end{terminaloutput}
+
+\cref{fig:matlab-wls} visar den genererade plotten.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{matlab/wls_fit.png}
+  \caption{Viktad minsta-kvadrat anpassning}
+  \label{fig:matlab-wls}
+\end{figure}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% ispell-local-dictionary: "swedish"
+%%% End:

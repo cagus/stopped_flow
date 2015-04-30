@@ -1,5 +1,5 @@
 \section{Exempelskript för ickelinjär kurvanpassning}
-\label{sec:matlab-exempel}
+\label{sec:matlab-nonlinear}
 Nedan finner ni ett Matlab skript ({\tt passning.m}) för incke linjär kurvanpassning.
 Ekvationen som passas i exemplet är helt godtycklig:
 
@@ -9,13 +9,13 @@ Ekvationen som passas i exemplet är helt godtycklig:
 \end{equation}
 
 Vi genererar data för passning med brus och låter Matlabs funktion
-``fit'' optimera $a$ och $b$ (se \cref{fig:matlab}).
+``fit'' optimera $a$ och $b$ (se \cref{fig:matlab-nonlinear}).
 
 \begin{figure}
   \centering
   \includegraphics[scale=0.5]{matlab/passning.png}
   \caption{Ickelinjär kurvanpassning}
-  \label{fig:matlab}
+  \label{fig:matlab-nonlinear}
 \end{figure}
 
 \matlabcode{matlab/passning.m}
@@ -28,10 +28,19 @@ När vi exekverar koden ovan får vi följande utdata i terminalen:
 fitobj = 
 
      General model:
-     fitobj(x) = (a*(x.^b+1)./(x.^(b+1)+1))
+     fitobj(x) = (a*g(b,x)./g(b+1,x))
      Coefficients (with 95% confidence bounds):
        a =       2.004  (1.988, 2.02)
        b =       3.207  (2.813, 3.601)
+
+standard_deviation =
+
+    0.0082    0.2009
+
+
+root_mean_square_error =
+
+    0.0999
 \end{terminaloutput}
 
 Vi ser att passningen lyckades och de sanna värdena ligger väl inom
@@ -39,7 +48,7 @@ angivna 95\%  konfidensintervall. Vi noterar dock att osäkerheten är
 relativt stor för {\tt b}. Observera att vi gav startvärdena 1 för
 optimeringen av $a$ och $b$. För att kurvanpassningen skall vara pålitlig
 bör man försöka välja så bra startvärden som möjligt. Genom att titta på
-den brusiga kurvan i \cref{fig:matlab} kunde vi t. ex. från
+den brusiga kurvan i \cref{fig:matlab-nonlinear} kunde vi t. ex. från
 skärningspunkten med y-axeln satt startgissningen för $a$ någonstans
 kring 2 och sedan löst ut $b$ ur en approximativ version av \cref{eq:ex} för
 $f(4) \approx 0.5$.
@@ -71,5 +80,11 @@ result =
 
 metoden med {\tt fsolve} producerar likvärdiga passningar men ger
 inga konfidensintervall, samt varnar för det mesta (om inställningar inte
-görs aktivit) att efterfrågade toleranser inte kunde uppnås. Använd den
+görs aktivt) att efterfrågade toleranser inte kunde uppnås. Använd den
 metod ni är mest bekväma med: antingen {\tt fsolve} eller {\tt fit}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% ispell-local-dictionary: "swedish"
+%%% End:

@@ -1,7 +1,7 @@
 \section{Dataanalys}
 \label{sec:analys}
 Skriv ett skript (i exmepelvis Matlab, se exempelskript i
-\cref{sec:matlab-exempel} i Bilaga) för att passa funktionsuttryck 
+\cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck 
 till era rådata. Gör passningen för både ``pseudo första ordningens''
 och andra ordningens behandling i enlighet med härledningarna i
 \cref{sec:irrev_unary,sec:irrev_binary}. Nedan följer några tips:
@@ -23,6 +23,11 @@ och andra ordningens behandling i enlighet med härledningarna i
 \item Det kan vara bra att låta en fri parameter skala
   extinktionskoefficienten vid passningen. Denna parameter kommer då även
   att kompensera eventuellt fel i absolut koncentration av \ce{SCN-}.
+\item Glöm inte att rapportera korrigering för primär kinetisk salteffekt
+  för era hastighetskonstanter.
+\item För att underlätta analysen kan det vara fördelaktigt att studera
+  temperaturberoendet vid en given jonstyrka och {\em vice versa}:
+  jonstyrkeberoendet vid en given temperatur (förslagsvis rumstemperatur).
 % \item Ni behöver inte göra separata passningar för det reversibla
 %   fallet. Förfarandet skiljer sig endast i den efterföljande
 %   ekvationslösningen (där jämviktskonstanten nu behövs för bestämning av

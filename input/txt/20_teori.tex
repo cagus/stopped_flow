@@ -8,19 +8,21 @@ hastighetsuttrycken.
 
 \subsection{Hastighetsuttryck}
 För läslighets skull betecknar vi från och med nu [\ce{FeSCN^2+}],
-[\ce{Fe^3+}] och [\ce{SCN-}] och med variablerna $x$, $y$ och $z$ och de
+[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $x$, $y$ och $z$ och de
 initiala koncentrationerna med respektive versaler $X$, $Y$ och $Z$. Vi
 kan då beskriva koncentrationerna vid tiden $t$ enligt:
 
 \input{tab/conc}
 
-Härledningarna nedan baseras -- för läslighets skull -- på sista raden
-ovan ($X=0$), vilket motsvarar förhållandena i våra ``stopped-flow'' försök (vi har
-idealt ingen produkt innan mätning).
+Idealt har vi ingen produkt innan blandning av reaktantlösningarna
+($X=0$). För läslighets skull baserar vi följande härledningar på det
+antagandet:
 
-Det är från dataserier för $x(t)$ som ni genom kurvanpassning
-bestämmer $k_f$ för varje given kombination av temperatur och
-jonstyrka.
+\input{tab/conc2}
+
+Det är från dataserier för $x(t)$ (eller snarare absorbans mot tid) som
+ni genom kurvanpassning bestämmer $k_f$ för varje kombination av
+temperatur och jonstyrka.
 
 Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
 integrera den ordinära differentialekvation som beskriver dess
@@ -67,6 +69,10 @@ hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning:
 
 \input{derivations/irrev_unary_1}
 
+Notera att vi bytte tecken för integranden från $x$ till $\chi$ för att
+undvika förväxling med den övre integrationsgränsen (detsamma gäller
+bytet från $t$ till $\tau$).
+
 \subsubsection{Reversibel pseudo första ordningens reaktion}
 \label{sec:rev_unary}
 Ett steg mot en mer korrekt beskrivning är att även beakta
@@ -74,8 +80,8 @@ bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
 konstant). Härledningen är analog och blir:
 \input{derivations/rev_unary_1}
 
-Kom ihåg att $k_f$ och $k_b$ inte är oberoende då de skall reproducera
-jämviktskonstanten.
+Kom ihåg att $k_f$ och $k_b$ inte är oberoende av varandra då de skall reproducera
+jämviktskonstanten (se \cref{eq:equilibrium}).
 % Notera att funktionsformen, $f(x) = C_1(1-e^{C_2x})$, är densamma
 % som i \cref{sec:irrev_unary}.
 
@@ -150,7 +156,7 @@ där $I$ är jonstyrkan, $b_i$ är molaliteten av ämne $i$ och $z_i$ är
 laddningen för jonen.
 
 På liknande vis som polära lösningsmedel stabiliserar
-solvaterade joner kan åskådarjoner (joner som inte
+solvatiserade joner kan åskådarjoner (joner som inte
 direkt deltar i reaktionen) påverka stabiliteten av våra joner och
 jonkomplex i reaktionen. Om stabiliseringen av reaktanter är större än
 för ``transition-state'' kommer den effektiva aktiveringsenergin att
@@ -204,7 +210,7 @@ där $z_i$ är laddningstalet för ämnet $i$ och $A$ är en konstant från Deby
 \end{equation}
 
 $F$ är Faradays konstant, $N_A$ Avogadros tal, $\varepsilon_r$ den
-relativa permittiviteten för mediumet, $\varepsilon_0$ permitiviteten för
+relativa permittiviteten för mediumet, $\varepsilon_0$ permittiviteten för
 vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
 \SI{298.15}{\kelvin} är $A = 0.509$ (givet $I^\plimsoll =
 \SI{1}{\mole\per\kg}$).
@@ -232,7 +238,10 @@ på vår observerade hastighetskonstant har följande samband:
 där $k_{obs}$ är den observerade hastighetskonstanten och $k^{\circ}$ är
 hastighetskonstanten extrapolerad till $I = \SI{0}{\mole\per\kg}$ (ett
 förfarande som gör värden från olika experiment jämförbara med
-varandra).
+varandra). Därför är det viktigt att man rapporterar vid vilken jonstyrka
+mätningarna av en hastighetskonstant gjorts, och förslagsvis anger man
+också ett korrigerat $k^\circ$-värde (där man också anger att man använt
+ex.vis Debye-Hückels gränslag för korrigeringen).
 
 %%% Local Variables:
 %%% mode: latex
