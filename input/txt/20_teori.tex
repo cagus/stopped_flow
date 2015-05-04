@@ -111,7 +111,7 @@ Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
 
-Notera att vi antog $4ax < b^2$ vilket går att visa, men lämnas som en
+Notera att vi antog $4ac < b^2$ vilket går att visa, men lämnas som en
 övning för läsaren.
 % Notera att funktionsformen, $f(x) = C_1\frac{1 - e^{C_2x}}{C_3 -
 %   e^{C_2x}}$, är densamma som i \cref{sec:irrev_binary}.
@@ -199,30 +199,30 @@ enligt Debye-Hückels gränslag (endast giltig i utspädda lösningar):
 
 \begin{equation}
   \label{eq:activity}
-  \log_{10}\gamma_i = -Az_i^2\sqrt{\frac{I}{I^\plimsoll}}
+  \log_{10}\gamma_i = -A_{DH}z_i^2\sqrt{\frac{I}{I^\plimsoll}}
 \end{equation}
 
-där $z_i$ är laddningstalet för ämnet $i$ och $A$ är en konstant från Debye-Hückel teorin:
+där $z_i$ är laddningstalet för ämnet $i$ och $A_{DH}$ är en konstant från Debye-Hückel teorin:
 
 \begin{equation}
   \label{eq:debye-huckel-a}
-  A = \frac{1}{\ln 10} \frac{F^3}{4\pi N_A}\sqrt{\frac{\rho b^\plimsoll}{2(\varepsilon_0\varepsilon_rRT)^3}}
+  A_{DH} = \frac{1}{\ln 10} \frac{F^3}{4\pi N_A}\sqrt{\frac{\rho b^\plimsoll}{2(\varepsilon_0\varepsilon_rRT)^3}}
 \end{equation}
 
 $F$ är Faradays konstant, $N_A$ Avogadros tal, $\varepsilon_r$ den
 relativa permittiviteten för mediumet, $\varepsilon_0$ permittiviteten för
 vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
-\SI{298.15}{\kelvin} är $A = 0.509$ (givet $I^\plimsoll =
+\SI{298.15}{\kelvin} är $A_{DH} = 0.509$ (givet $I^\plimsoll =
 \SI{1}{\mole\per\kg}$).
 
 Logaritmering av \cref{eq:ts-conc} och insättning av \cref{eq:activity}
 ger:
 
 \begin{align}
-  \log_{10}[TS] &= \log_{10}([A][B]K) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A
+  \log_{10}[TS] &= \log_{10}([A][B]K) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A_{DH}
                   \sqrt{\frac{I}{I^\plimsoll}} \\
   \label{eq:log-ts-corr}
-  \log_{10}[TS] &= \log_{10}([A][B]K) + 2z_Az_BA\sqrt{\frac{I}{I^\plimsoll}}
+  \log_{10}[TS] &= \log_{10}([A][B]K) + 2z_Az_BA_{DH}\sqrt{\frac{I}{I^\plimsoll}}
 \end{align}
 
 där vi antagit att laddningen för vårt transition state är summan av
@@ -232,7 +232,7 @@ på vår observerade hastighetskonstant har följande samband:
 
 \begin{equation}
   \label{eq:kinetic-salt}
-  \log_{10} k_{obs} = \log_{10} k^{\circ} + 2Az_az_b\sqrt{\frac{I}{I^\plimsoll}}
+  \log_{10} k_{obs} = \log_{10} k^{\circ} + 2A_{DH}z_az_b\sqrt{\frac{I}{I^\plimsoll}}
 \end{equation}
 
 där $k_{obs}$ är den observerade hastighetskonstanten och $k^{\circ}$ är
