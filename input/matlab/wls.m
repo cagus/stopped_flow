@@ -4,9 +4,9 @@
 
 x = [1.3 2.7 3.5 7.8 9.2];
 y = [6.5 11.7 13.6 25.2 33.2];
-dy = [1.5 0.9 0.6 2.4 2.2];
+dy = [1.3 0.9 0.6 2.4 2.2];
 
-% Vi kan plotta punkterna med osäkerhteen utritad
+% Vi kan plotta punkterna med osäkerheten utritad
 errorbar(x, y, dy, 'o')
 
 % Nu genomför vi en s.k. "viktad" minsta kvadrat anpassning:
@@ -14,12 +14,16 @@ errorbar(x, y, dy, 'o')
 f = fittype('poly1');  % Linjär ekvation (2 parametrar)
 options = fitoptions('poly1');
 options.Weights = 1./dy;
-fun = fit(x', y', f, options);
-k=fun.p1
-m=fun.p2
+fitobj = fit(x', y', f, options);
+k = fitobj.p1
+m = fitobj.p2
+% Standard avvikelsen för resp. parameter fås genom:
+std_dev = diff(confint(fitobj, 0.6827))/2;
+dk = std_dev(1)
+dm = std_dev(2)
 
 hold on;
 handle = plot([x(1) x(end)], m + k*[x(1) x(end)]);
-lbl = sprintf('fit (y = %.2f x + %.2f )', k, m);
+lbl = sprintf('fit: y = (%.2f +/- %.2f) x + %.2f +/- %.2f', k, dk, m, dm);
 legend('data', lbl, 'Location', 'NorthWest')
 saveas(handle, 'wls_fit.png', 'png')
