@@ -7,6 +7,8 @@ output/
 .cache/
 .ipynb_checkpoints/
 
+misc/.config/
+
 # auctex generated files:
 input/_region_.*
 input/auto
