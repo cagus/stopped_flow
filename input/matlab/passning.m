@@ -1,4 +1,4 @@
-% Antag att vi har en ickelinjär funcktion f(x) med två
+% Antag att vi har en ickelinjär funktion f(x) med två
 % parametrar a och b:
 %
 %               x^b + 1

@@ -50,13 +50,15 @@ laborationsutrustningen och programvaran. Enheten för tidsangivelserna är
 
 \subsubsection{Förberedelser}
 \begin{itemize}
-\item Tänd spektrofotometerns lampan minst 5 minuter innan mätningarna.
+\item Tänd spektrofotometerns lampa minst 5 minuter innan mätningarna.
 \item Kontrollera att vattennivån är inom de markerade gränserna för vattenbadet.
 Starta termostat och lägg i extern termometer.
 \item Kontrollera att kylvattnet är på med hjälp av den röda flödesmätaren.
 \item Sätt på kranvattnet.
 \item Starta programmet ``StopFlowSpect'' på datorn.
-\item Ställ in och invänta rätt temperatur OBS! Vid alla mätningar och
+\item Ställ in och invänta rätt temperatur (indikatorerna vid heat
+  blinkar till oregelbundet med frekvens på ett fåtal sekunder)
+\item OBS! Vid alla mätningar och
   kalibreringar ska knappen för ``Start/Stop Acquisition`` vara röd. Om
   programmet stängs av måste kalibreringen (med dest. vatten) göras om,
   tryck därför aldrig på ``Exit''. Undvik att luftbubblor kommer in i
@@ -65,31 +67,32 @@ Starta termostat och lägg i extern termometer.
 \subsubsection{Kalibrering}
 \begin{itemize}
 \item Ställ ``Integration time'' till 2 ms.
-\item Blockera strålgången med metallplåten. Tryck på ``Dark''. Ta bort
+\item Blockera strålgången med metallplåten. Tryck på ``Dark''. (En röd
+  plan linje med brus bör visas) Ta bort
   metallplåten.
-\item Injicera destillerat vatten. Tryck på ``Ref''.
+\item Injicera destillerat vatten. Tryck på ``Ref''. (En blå linje
+  motsvarande lampans spektrum bör visas)
 \item Kontrollera att transmittansen och absorptionen ser ut som de
-  bör: en blå kurva motsvarande spektrumet för lampan och en röd för
-  bakgrundsnivå i mörker.
-\item Byt sprutor och injicera tillräckligt med reaktantlösning så att
-  komplexet bildas i kyvetten.
-\item Gå in i absorptionstfönstret och bestäm vid vilken våglängd
-  mätningarna ska göras genom att välja ``Peak'' i Integral/peak-menyn
-  och ``drag-drop'':a den vertikala linjen där ni vill mäta. Beakta att det
+  bör (100\% transmittans, 0 Abs)
+\item Byt sprutor och injicera reaktantlösning tills komplex bildats i utloppet.
+\item Gå in i absorptionsfönstret och välj våglängd
+  för mätningarna genom att välja ``Peak'' i Integral/peak-menyn
+  och ``drag-drop'':a den vertikala linjen. Beakta att det
   viktiga måttet vid val av våglängd är förhållandet mellan signal och brus
-  (``signal-to-noise-ratio''), denna få ni själva bedöma var den är som
-  bäst genom att aktivera ``Start/stop acquisition''.
+  (``signal-to-noise-ratio''), denna uppskattar ni genom att aktivera
+  ``Start/stop acquisition''.
 \end{itemize}
 \subsubsection{Mätning}
 \begin{itemize}
 \item Gå in på fliken ``Time mode''.
 \item Välj ``As fast as possible'', ``Save to file'' och ``Use a trigger''.
-\item Tryck på ``Start'' så att den gröna lampan lyser (triggern aktiveras).
+\item Tryck på ``Start'' så att den gröna lampan intill ``Running'' lyser
+  (datorn väntar nu på att brytaren vid stoppet för sista sprutans kolv aktiveras).
 \item Vinkla samtliga T-kranar nedåt.
 \item Injicera snabbt in ny reaktantlösning. Håll kvar greppet i 4 sekunder.
-\item Välj alltid ``Replace'' när frågerutan dyker upp (se till att
-  kopiera och döpa om {\tt data.txt} ifall ni är nöjda med en körning, ni
-  hittar en genväg till filen på skrivbordet).
+\item Välj alltid ``Replace'' ifall överskrivning efterfrågas (kopiera
+  och döpa om {\tt data.txt} om ni är nöjda, genväg finns på skrivbordet, eller {\tt
+    C:\textbackslash temp\textbackslash data\textbackslash data.txt}).
 \end{itemize}
 
 %%% Local Variables:

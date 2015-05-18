@@ -1,33 +1,81 @@
 \section{Dataanalys}
 \label{sec:analys}
 Skriv ett skript (i exmepelvis Matlab, se exempelskript i
-\cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck 
-till era rådata. Gör passningen för både ``pseudo första ordningens''
-och andra ordningens behandling i enlighet med härledningarna i
-\cref{sec:irrev_unary,sec:irrev_binary}. Nedan följer några tips:
+\cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck till
+era rådata. Gör passningen både med och utan antagende om
+irreversibilitet samt ``pseudo första ordningens'' kinetik (totalt 4
+fall) för minst en dataserie. Funktionsuttryck får ni från härledningarna
+i \cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}.
+När ni utvärderat vilket funktionsuttryck som ger lägst osäkerhet i
+bestämningen av $k_f$ kan ni använda det för analysen av övriga
+mätserier.
+
+För varje kombination av $T$ och $I$ kommer ni göra flera replikat. För
+varje replikat får ni från kurvanpassningen en uppskattning av
+hastighetskonstanten $k_i$ med en uppskattad osäkerhet
+($\sigma_i$). Dessa behandlar ni sedan statistiskt genom att ta ett
+viktat medelväre ($\bar{k}$) där ni använder den reciproka variansen som
+vikt ($w_i$):
+\begin{align}
+  w_i &= \frac{1}{\sigma_i^2} \\
+  \bar{k} &= \frac{\sum_i{w_i \cdot k_i}}{\sum_i{w_i}}
+\end{align}
+variansen ($D^2$) för det viktade medelvärdet ges då av:
+\begin{align}
+  D^2 &= \frac{1}{\sum_i 1/\sigma_i^2}
+\end{align}
+vid rapportering av $\bar{k}$ anges osäkerheten konventionellt som en
+standardavvikelse ($\sigma \approx \sqrt{D^2}$):
+\begin{align}
+  k_f &= \bar{k} \pm \sqrt{D^2}
+\end{align}
+vilket ger ett konfidensintervall på c:a 68.27\%.\footnote{
+Mer finns att läsa här:
+%\url{http://en.wikipedia.org/wiki/68\%E2\%80\%9395\%E2\%80\%9399.7_rule}
+\url{http://en.wikipedia.org/wiki/68-95-99.7\_rule}
+}. Efterföljande regressioner baserade på dessa
+data gör ni då viktade med den reciproka variansen ($\frac{1}{D^2}$) som
+vikt.
+
+Nedan följer några tips:
 
 \begin{enumerate}
 \item Kom ihåg att det är ett visst
   avstånd mellan blandkammaren i stopped-flow-utrustningen och
   kyvetten vilket betyder att $t_0$ är en parameter beroende på
-  flödeshastigheten ni åstadkommer vid blandingen av reaktantlösningarna.
-\item Hastighetsutrycket för pseudo första ordningens reaktion kan
-  linjäriseras genom att göra passningen mot logaritmen av
-  absorbansen. OLS\footnote{Ordinary Least Squares} passningen är
-  då analytisk (``closed form'') vilket gör den lämplig att använda sig av för
-  att bestämma initialgissning till den icke-linjära (iterativa)
-  passningen som behövs för ``andra ordningens'' behandling.\footnote{
-  Ni kan även göra en icke-linjär passning för pseudo första ordningens
-  uttryck,   utgåendes från otransformerade data, dock kommer det
-  troligtvis endast ha en marginell effekt på erhållna parametrar.}
-\item Det kan vara bra att låta en fri parameter skala
-  extinktionskoefficienten vid passningen. Denna parameter kommer då även
-  att kompensera eventuellt fel i absolut koncentration av \ce{SCN-}.
-\item Glöm inte att rapportera korrigering för primär kinetisk salteffekt
-  för era hastighetskonstanter.
+  flödeshastigheten ni åstadkommer vid blandingen av
+  reaktantlösningarna. Ni behöver således införa den som en parameter i
+  ekvationerna som används vid passningen
+\item Det kommer sannolikt behövas en fri parameter som skalar
+  extinktionskoefficienten vid passningen (speciellt ifall ni använder en
+  annan våglängd än $\lambda_{max}$). Denna parameter kommer då även att
+  kompensera eventuellt fel i beräknad koncentration av \ce{FeSCN^{2+}}
+  (vilket kan vara ganska stort pga. jonstyrkeeffekter).
 \item För att underlätta analysen kan det vara fördelaktigt att studera
   temperaturberoendet vid en given jonstyrka och {\em vice versa}:
-  jonstyrkeberoendet vid en given temperatur (förslagsvis rumstemperatur).
+  jonstyrkeberoendet vid en given temperatur (förslagsvis
+  rumstemperatur). Att variera jonstyrka och temperatur samtidigt skulle
+  förvisso vara intressant, men analysen blir avsevärt mycket svårare.
+\item Initialgissning för hastighetskonstanten kan ni uppskatta visuellt
+  från en plot av absorbans mot tid under antagandet irreversibel pseduo
+  första ordningens reaktion. Då gäller: $z(t) = Ze^{-k_f t} \implies k_f
+  \approx 1/T_{0.37}$ -- där $T_{0.37}$ är tiden det tar för 63\% av den
+  begränsande reaktanten att försvinna.
+
+% \item Hastighetsutrycket för pseudo första ordningens reaktion kan
+%   linjäriseras genom att göra passningen mot logaritmen av
+%   koncentrationen av den begränsande reaktanten. OLS\footnote{Ordinary
+%     Least Squares} passningen är då analytisk (``closed form'') vilket
+%   gör den lämplig att använda sig av för att bestämma initialgissning
+%   till den icke-linjära (iterativa) passningen som behövs för ``andra
+%   ordningens'' behandling.\footnote{
+%   Ni kan även göra en icke-linjär passning för pseudo första ordningens
+%   uttryck,   utgåendes från otransformerade data, dock kommer det
+%   troligtvis endast ha en marginell effekt på erhållna parametrar.}
+
+% \item Glöm inte att rapportera korrigering för primär kinetisk salteffekt
+%   för era hastighetskonstanter.
+
 % \item Ni behöver inte göra separata passningar för det reversibla
 %   fallet. Förfarandet skiljer sig endast i den efterföljande
 %   ekvationslösningen (där jämviktskonstanten nu behövs för bestämning av
