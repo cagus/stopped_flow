@@ -2,7 +2,9 @@
 \label{sec:analys}
 Skriv ett skript (i exmepelvis Matlab, se exempelskript i
 \cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck till
-era rådata. Gör passningen både med och utan antagende om
+era rådata. Notera att vi inte tillåter att ni kopierar in rådata från
+textfilerna in i koden (det försvårar utskrift och försämrar
+överskådligheten). Gör passningen både med och utan antagende om
 irreversibilitet samt ``pseudo första ordningens'' kinetik (totalt 4
 fall) för minst en dataserie. Funktionsuttryck får ni från härledningarna
 i \cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}.
@@ -45,17 +47,19 @@ Nedan följer några tips:
   kyvetten vilket betyder att $t_0$ är en parameter beroende på
   flödeshastigheten ni åstadkommer vid blandingen av
   reaktantlösningarna. Ni behöver således införa den som en parameter i
-  ekvationerna som används vid passningen
+  ekvationerna som används vid passningen.
 \item Det kommer sannolikt behövas en fri parameter som skalar
   extinktionskoefficienten vid passningen (speciellt ifall ni använder en
   annan våglängd än $\lambda_{max}$). Denna parameter kommer då även att
   kompensera eventuellt fel i beräknad koncentration av \ce{FeSCN^{2+}}
-  (vilket kan vara ganska stort pga. jonstyrkeeffekter).
+  (vilket kan vara ganska stort pga. jonstyrkeeffekter och ev. antagande
+  om irreversibilitet).
 \item För att underlätta analysen kan det vara fördelaktigt att studera
   temperaturberoendet vid en given jonstyrka och {\em vice versa}:
   jonstyrkeberoendet vid en given temperatur (förslagsvis
-  rumstemperatur). Att variera jonstyrka och temperatur samtidigt skulle
-  förvisso vara intressant, men analysen blir avsevärt mycket svårare.
+  rumstemperatur). Att variera jonstyrka och temperatur är
+  förvisso intressant, men insamling av data och efterföljande analysen
+  blir avsevärt mycket mer tidskrävande.
 \item Initialgissning för hastighetskonstanten kan ni uppskatta visuellt
   från en plot av absorbans mot tid under antagandet irreversibel pseduo
   första ordningens reaktion. Då gäller: $z(t) = Ze^{-k_f t} \implies k_f

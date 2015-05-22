@@ -65,7 +65,7 @@ uttryck för tidsutvecklingen av [\ce{SCN-}]:
 \end{equation}
 
 där $k' = k_f[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
-hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning: 
+hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning:
 
 \input{derivations/irrev_unary_1}
 
@@ -194,15 +194,16 @@ gränslag\footnote{
 \end{equation}
 
 där $z_i$ är laddningstalet för ämnet $i$, $I^\plimsoll$ är
-standard-molaliteten (konventionellt \SI{1}{\mole\per\kg}) och $A_{DH}$
-är en konstant från Debye-Hückel teorin: 
+standard-jonstyrkan (konventionellt \SI{1}{\mole\per\kg}) och $A_{DH}$
+är en (enhetslös) konstant från Debye-Hückel teorin:
 
 \begin{equation}
   \label{eq:debye-huckel-a}
   A_{DH} = \frac{1}{\ln 10} \frac{F^3}{4\pi N_A}\sqrt{\frac{\rho b^\plimsoll}{2(\varepsilon_0\varepsilon_rRT)^3}}
 \end{equation}
 
-$F$ är Faradays konstant, $N_A$ Avogadros tal, $\varepsilon_r$ den
+$F$ är Faradays konstant, $N_A$ Avogadros tal, $\rho$ lösningsmedlets
+densitet, $b^{\plimsoll}$ standard-molaliteten, $\varepsilon_r$ den
 relativa permittiviteten för mediumet, $\varepsilon_0$ permittiviteten för
 vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
 \SI{298.15}{\kelvin} är $A_{DH} = 0.509$.
@@ -238,18 +239,20 @@ också ett korrigerat $k^\circ$-värde (där man också anger att man använt
 -- i detta fall -- Debye-Hückels gränslag för korrigeringen).
 
 \subsection{Förenklingar}
-I denna laboration beaktar vi endast reaktionen för bildning av
-monotiocyanatojärn(III). Men i verkligheten förekommer även följande
-komplex: 
+Vi har endast beaktat reaktionen för bildning av
+monotiocyanatojärn(III). I verkligheten förekommer även komplexen givna i
+\cref{tab:equilibria}.
 
-\begin{center}
+\begin{table}
+  \centering
+  \caption{Några utvalda relevanta jämvikter.}
   \begin{tabular}{r@{}c@{}rcl@{}c@{}lr@{}c@{}S}
     \ce{FeSCN^2+} & + & \ce{SCN-} & $\rightleftharpoons$ &
         \ce{Fe(SCN)_2^+} & & & $\beta$ \cite{bahta_critical_1997} &=& 3.34(2) \\
     \ce{Fe(SCN)_2^+} & + & \ce{SCN-} & $\rightleftharpoons$ &
         \ce{Fe(SCN)3} & & & $\beta$ \cite{bahta_critical_1997}
             &=& 3.82(9) \\
-    \ce{Fe^3+} & + & \ce{H2O} & $\rightleftharpoons $ & 
+    \ce{Fe^3+} & + & \ce{H2O} & $\rightleftharpoons $ &
         \ce{FeOH^2+} & + & \ce{H+} & $\log_{10}(\beta)$\cite{peintler_improved_2000}
             &=& $\num{-2.774}$ \\
     \ce{2Fe^3+} & + & \ce{2H2O} & $\rightleftharpoons $ &
@@ -258,7 +261,8 @@ komplex:
      &  & \ce{SCNH} & $\rightleftharpoons $ &
         \ce{SCN-} & + & \ce{H+} & pKa\cite{chiang_determination_2000} &=&$\num{-1.28}$
   \end{tabular}
-\end{center}
+  \label{tab:equilibria}
+\end{table}
 
 De två stabilitetskonstanterna för tiocyanatokomplexen gäller för
 $I=\SI{1}{\mol\per\kg}$ medan de två för hydroxokomplexen gäller för
