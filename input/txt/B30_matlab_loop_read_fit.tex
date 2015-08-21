@@ -1,0 +1,54 @@
+\section{Exempelskript för automatisk passning av flera datafiler}
+\label{sec:matlab-loop-read-fit}
+Detta exempel förutsätter följande mappstruktur:
+
+\begin{terminaloutput}
+.
++-- 15
+|   +-- 1.txt
+|   +-- 2.txt
++-- 16
+|   +-- 1.txt
+|   +-- 2.txt
++-- anpassa.m
++-- anpassa_alla.m
+\end{terminaloutput}
+
+Nedan finner ni ett Matlab skript ({\tt anpassa\_alla.m}), som
+i en dubbel-loop anropar en egenskriven passningsfunktion ({\tt
+  anpassa.m}) som gör en linjär regression för en specifierad textfil. 
+
+\matlabcode{matlab/anpassa_alla.m}
+
+\begin{terminaloutput}
+>> run anpassa_alla
+    15
+
+     1
+
+    1.9329    0.2377    0.1234    0.3236
+
+     2
+
+    1.8325    0.2961    0.1762    0.6239
+
+    19
+
+     1
+
+    2.9699    0.2328    0.7338    1.7560
+
+     2
+
+    3.0746   -0.1011    0.0531    0.2119
+\end{terminaloutput}
+
+Funktionen som utför passningen ({\tt anpassa.m}) ser ut enligt följande:
+
+\matlabcode{matlab/anpassa.m}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% ispell-local-dictionary: "swedish"
+%%% End:

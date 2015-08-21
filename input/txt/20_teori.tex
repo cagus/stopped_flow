@@ -1,0 +1,285 @@
+\section{Teori}
+\label{sec:teori}
+Laborationen introducerar ingen ny teori. Föreläsningarna samt
+kurslitteratur för kursen innehåller det ni behöver. Men som ledning för
+den numeriska analysen ges här fullständiga härledningar av
+koncentrationernas tidsberoende för olika grad av förenkling av
+hastighetsuttrycken.
+
+\subsection{Hastighetsuttryck}
+För läslighets skull betecknar vi från och med nu [\ce{FeSCN^2+}],
+[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $x$, $y$ och $z$ och de
+initiala koncentrationerna med respektive versaler $X$, $Y$ och $Z$. Vi
+kan då beskriva koncentrationerna vid tiden $t$ enligt:
+
+\input{tab/conc}
+
+Idealt har vi ingen produkt innan blandning av reaktantlösningarna
+($X=0$). För läslighets skull baserar vi följande härledningar på det
+antagandet:
+
+\input{tab/conc2}
+
+Det är från dataserier för $x(t)$ (eller snarare absorbans mot tid) som
+ni genom kurvanpassning bestämmer $k_f$ för varje kombination av
+temperatur och jonstyrka.
+
+Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
+integrera den ordinära differentialekvation som beskriver dess
+tidsberoende. Reaktionen är av andra ordningen och reversibel, men vi kan
+välja att beskriva denna med olika grad av förenklingar:
+\begin{description}
+\item[Irreversibel] \hfill \\
+  Om en jämvikt är kraftigt förskjuten mot produkt kommer
+  bakåtreaktionen vara av liten betydelse och kan därmed
+  ignoreras i behandlingen av kinetiken för att få
+  ett enklare hastighetsuttryck.
+\item[Pseudo första ordningen] \hfill \\ %
+  Ifall initialkoncentrationen av en reaktant är mycket större än den andra,
+  kan reaktanten i överskott approximeras som konstant under reaktionens
+  gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
+  hastighets konstant som implicit inkluderar den högre koncentrationen.
+\end{description}
+
+\input{tab/rate_eqs}
+
+I \cref{tab:rate_eqs} ges olika uttryck för $\frac{dx}{dt}$ där vi i
+fallen för pseudo första ordningens uttryck antagit att $[\ce{Fe^3+}]_0
+\gg [\ce{SCN-}]_0$. I
+\cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}
+följer härledningar för vart och ett av dessa fyra fall.
+
+
+\subsubsection{Irreversibel pseudo första ordningens reaktion}
+\label{sec:irrev_unary}
+Denna är den enklaste modell vi kan ansätta (och även den med störst fel).
+Jämviktskonstanten visar att den ``framåtgående'' reaktionen (bildandet av \ce{FeSCN^2+})
+är den dominerande. Vidare antar vi att $[\ce{Fe^3+}]_0 \gg [\ce{SCN-}]_0$ vilket
+betyder att koncentrationen järn(III) kan approximeras som konstant under
+reaktionens gång. Om vi utnyttjar dessa antaganden får vi ett förenklat
+uttryck för tidsutvecklingen av [\ce{SCN-}]:
+
+\begin{equation}
+  \label{eq:scn-pseudo-rate}
+  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
+\end{equation}
+
+där $k' = k_f[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
+hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning:
+
+\input{derivations/irrev_unary_1}
+
+Notera att vi bytte symbol för integranden från $x$ till $\chi$ för att
+undvika förväxling med den övre integrationsgränsen (detsamma gäller
+bytet från $t$ till $\tau$).
+
+\subsubsection{Reversibel pseudo första ordningens reaktion}
+\label{sec:rev_unary}
+Ett steg mot en mer korrekt beskrivning är att även beakta
+bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
+konstant). Härledningen är analog och blir:
+\input{derivations/rev_unary_1}
+
+Kom ihåg att $k_f$ och $k_b$ inte är oberoende av varandra då de skall reproducera
+stabilitetskonstanten i \cref{eq:equilibrium}.
+% Notera att funktionsformen, $f(x) = C_1(1-e^{C_2x})$, är densamma
+% som i \cref{sec:irrev_unary}.
+
+\subsubsection{Irreversibel bimolekylär kinetik}
+\label{sec:irrev_binary}
+Om vi istället fokuserar på att bättre beskriva effekten av att
+[\ce{Fe^3+}] är tidsberoende får vi en något svårare integral att lösa:
+
+\input{derivations/irrev_binary_1}
+
+Den primitiva funktionen kan vi erhålla genom att slå upp den i ``BETA Handbook of
+Mathematics'', integrera för hand med partialbråksuppdelning eller
+använda ett CAS\footnote{  Computer Algebra System -   exempelvis
+  Mathematica, Maple, Maxima, SymPy m.fl.}. Friställandet av vår beroende
+variabel $x$ till ett explicit uttryck i den oberoende variabeln $t$
+blir:
+
+\input{derivations/irrev_binary_2}
+
+vi ser att det detta explicita uttryck inte längre kan linjäriseras
+vilket gör en regression mer avancerad.
+
+\subsubsection{Reversibel bimolekylär kinetik}
+Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
+\label{sec:rev_binary}
+\input{derivations/rev_binary_1}
+\input{derivations/rev_binary_2}
+\input{derivations/rev_binary_3}
+
+Notera att vi antog $4ac < b^2$ vilket går att visa, men lämnas som en
+övning för läsaren.
+% Notera att funktionsformen, $f(x) = C_1\frac{1 - e^{C_2x}}{C_3 -
+%   e^{C_2x}}$, är densamma som i \cref{sec:irrev_binary}.
+
+
+\subsection{Hastighetskontanter}
+Hastighetskonstanter är verkliga konstanter för en given temperatur och
+jonstyrka. I era försök kommer dessa parametrar att variera och det är
+upp till er att behandla dessa effekter enligt någon av de modeller som
+behandlats i kursen.
+
+\subsection{Jonstyrkeeffekter}
+Jonstyrkan för en lösning beräknas enligt:
+
+\begin{equation}
+  \label{eq:ionic-strength}
+  I = \frac{1}{2}\sum_i b_iz_i^2
+\end{equation}
+
+där $I$ är jonstyrkan, $b_i$ är molaliteten av ämne $i$ och $z_i$ är
+laddningen för jonen.
+
+På liknande vis som polära lösningsmedel stabiliserar
+solvatiserade joner kan åskådarjoner (joner som inte
+direkt deltar i reaktionen) påverka stabiliteten av våra joner och
+jonkomplex i reaktionen. Om stabiliseringen av reaktanter är större än
+för ``transition-state'' kommer den effektiva aktiveringsenergin att
+stiga med ökande jonstyrka och \emph{vice versa}.
+
+Från Debye-Hückel teorin kan den s.k. ``primära kinetiska
+salteffkten'' härledas. Vi utgår från ett ``transition-state''-antagande:
+
+\begin{align}
+  \label{eq:ts}
+  % \ce{Fe^3+ + SCN-} & \ce{<=> [ Fe \dotsb SCN ]^2+ -> FeSCN^2+} \\
+  \ce{A + B} & \ce{<=> TS -> P} \\
+  \label{eq:dpdt-propto}
+  \frac{d[\ce{P}]}{dt} &\propto [TS]
+\end{align}
+
+vår hastighetskonstant $k$ för elementarreaktionen:
+\begin{equation}
+  \ce{A + B ->[k] P}
+\end{equation}
+måste inkludera alla hastighetsförändrande effekter utöver beroendet på
+respektive reaktants koncentration:
+
+\begin{equation}
+  \label{eq:dpdt-explicit}
+  \frac{d[\ce{P}]}{dt} = k[A][B]
+\end{equation}
+
+två parametrar som kan ha sådana effekter kan vara temperatur (som
+påverkar $K^\ddagger$) och jonstyrka (som påverkar \ce{\{A\}}, \ce{\{B\}} och \ce{\{TS\}})\footnote{
+  aktiviteten för ett ämne brukar betecknas med klammerparentes:
+  $ \ce{\{A\}} = \gamma_\ce{A}\frac{[\ce{A}]}{c^\plimsoll} $
+där $\gamma_\ce{A}$ är aktivitetskoefficienten för A och beror på
+lösningens sammansättning, tryck och temperatur.
+}. Steady-state
+halten av vårt transition-state ges av:
+
+\begin{equation}
+  \label{eq:ts-conc}
+  [\ce{TS}] = \frac{\gamma_A\gamma_B}{\gamma_{\ce{TS}}}\frac{[A][B]}{c^\plimsoll}K^\ddagger
+\end{equation}
+
+där $\gamma$ är aktivitetskoefficienterna för respektive ämne. För joner
+i vattenlösning kan aktivitetskoefficienten uppskattas från Debye-Hückel
+teorin, i denna laboration skall vi använda oss av Debye-Hückels
+gränslag\footnote{
+  Debye-Hückels gränslag är endast giltig i mycket utspädda lösningar ($I
+  < \SI{1e-3}{\mole\per\kg}$) men för att hålla komplexiteten av analysen
+  på en rimlig nivå använder vi ändå detta uttryck i denna laboration.
+}
+(endast giltig i mycket utspädda lösningar):
+
+\begin{equation}
+  \label{eq:activity}
+  \log_{10}\gamma_i = -A_{DH}z_i^2\sqrt{\frac{I}{I^\plimsoll}}
+\end{equation}
+
+där $z_i$ är laddningstalet för ämnet $i$, $I^\plimsoll$ är
+standard-jonstyrkan (konventionellt \SI{1}{\mole\per\kg}) och $A_{DH}$
+är en (enhetslös) konstant från Debye-Hückel teorin:
+
+\begin{equation}
+  \label{eq:debye-huckel-a}
+  A_{DH} = \frac{1}{\ln 10} \frac{F^3}{4\pi N_A}\sqrt{\frac{\rho b^\plimsoll}{2(\varepsilon_0\varepsilon_rRT)^3}}
+\end{equation}
+
+$F$ är Faradays konstant, $N_A$ Avogadros tal, $\rho$ lösningsmedlets
+densitet, $b^{\plimsoll}$ standard-molaliteten, $\varepsilon_r$ den
+relativa permittiviteten för mediumet, $\varepsilon_0$ permittiviteten för
+vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
+\SI{298.15}{\kelvin} är $A_{DH} = 0.509$.
+
+Logaritmering av \cref{eq:ts-conc} och insättning av \cref{eq:activity}
+ger:
+
+\begin{align}
+  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}(\frac{[A][B]}{(c^\plimsoll)^2}K) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A_{DH}
+                  \sqrt{\frac{I}{I^\plimsoll}} \\
+  \label{eq:log-ts-corr}
+  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}(\frac{[A][B]}{(c^\plimsoll)^2}K) + 2z_Az_BA_{DH}\sqrt{\frac{I}{I^\plimsoll}}
+\end{align}
+
+där vi antagit att laddningen för vårt transition state är summan av
+laddningarna för våra reaktanter.
+Från \cref{eq:dpdt-propto,eq:dpdt-explicit,eq:log-ts-corr} ser vi att jonstyrkeeffekten
+på vår observerade hastighetskonstant har följande samband:
+
+\begin{align}
+  \label{eq:kinetic-salt}
+  \boxed{
+  \log_{10} \left( \frac{k_{obs}}{k^{\circ}} \right) = 2A_{DH}z_az_b\sqrt{\frac{I}{I^\plimsoll}}
+  }
+\end{align}
+
+där $k_{obs}$ är den observerade hastighetskonstanten och $k^{\circ}$ är
+hastighetskonstanten extrapolerad till $I = \SI{0}{\mole\per\kg}$ (ett
+förfarande som gör värden från olika experiment jämförbara med
+varandra)\footnote{
+ De extrapolerade hastighetskonstanterna ($k^\circ$) för obefintlig
+ jonstyrka skall reproducera jämviktskonstanten: $K =
+ \frac{k^\circ_{f}}{k^\circ_{b}}$.
+}. Därför är det viktigt att man rapporterar vid vilken jonstyrka
+mätningarna av en hastighetskonstant gjorts, och förslagsvis anger man
+också ett korrigerat $k^\circ$-värde (där man också anger att man använt
+-- i detta fall -- Debye-Hückels gränslag för korrigeringen).
+
+\subsection{Förenklingar}
+Vi har endast beaktat reaktionen för bildning av
+monotiocyanatojärn(III). I verkligheten förekommer även komplexen givna i
+\cref{tab:equilibria}.
+
+\begin{table}
+  \centering
+  \caption{Några utvalda relevanta jämvikter.}
+  \begin{tabular}{r@{}c@{}rcl@{}c@{}lr@{}c@{}S}
+    \ce{FeSCN^2+} & + & \ce{SCN-} & $\rightleftharpoons$ &
+        \ce{Fe(SCN)_2^+} & & & $\beta$ \cite{bahta_critical_1997} &=& 3.34(2) \\
+    \ce{Fe(SCN)_2^+} & + & \ce{SCN-} & $\rightleftharpoons$ &
+        \ce{Fe(SCN)3} & & & $\beta$ \cite{bahta_critical_1997}
+            &=& 3.82(9) \\
+    \ce{Fe^3+} & + & \ce{H2O} & $\rightleftharpoons $ &
+        \ce{FeOH^2+} & + & \ce{H+} & $\log_{10}(\beta)$\cite{peintler_improved_2000}
+            &=& $\num{-2.774}$ \\
+    \ce{2Fe^3+} & + & \ce{2H2O} & $\rightleftharpoons $ &
+        \ce{Fe2(OH)2^4+} & + & \ce{2H+} & $\log_{10}(\beta)$\cite{peintler_improved_2000}
+            &=&$\num{-2.812}$ \\
+     &  & \ce{SCNH} & $\rightleftharpoons $ &
+        \ce{SCN-} & + & \ce{H+} & pKa\cite{chiang_determination_2000} &=&$\num{-1.28}$
+  \end{tabular}
+  \label{tab:equilibria}
+\end{table}
+
+De två stabilitetskonstanterna för tiocyanatokomplexen gäller för
+$I=\SI{1}{\mol\per\kg}$ medan de två för hydroxokomplexen gäller för
+$I=\SI{0.1}{\mol\per\kg}$. Isotiocyansyras pKa är extrapolerad till
+$I=\SI{0}{\mole\per\kg}$).
+
+Hur stora effekterna är från dessa jämvikter beror på
+$[\ce{Fe^{3+}}]_{tot}$, $[\ce{SCN-}]_{tot}$ och pH. Ni bör därför ta
+detta i beaktande när ni väljer era koncentrationer.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% ispell-local-dictionary: "swedish"
+%%% End:

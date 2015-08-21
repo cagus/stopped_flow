@@ -1,1 +1,24 @@
-build/
+output/
+*/*/*.pyc
+*/*/*.ipynb_checkpoints
+
+*/.~lock.*
+
+.cache/
+.ipynb_checkpoints/
+
+misc/.config/
+
+# auctex generated files:
+input/_region_.*
+input/auto
+input/prv_*.log
+input/prv_*.fmt
+input/*/_region_.*
+input/*/auto
+input/*/prv_*.log
+input/*/prv_*.fmt
+
+
+# output files put back into input for auctex to work
+input/derivations/*.tex
