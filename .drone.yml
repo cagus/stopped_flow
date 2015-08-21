@@ -1,0 +1,9 @@
+image: bjodah/dockerfile-bjodah-scicomp
+git:
+    path: github.com/bjodah/chemreac-stiffness
+script:
+  - cd ./input
+  - ./build.sh
+  - cd ../output
+  - tar -cjf stopped_flow.tar.bz2 main.pdf supp_mater.pdf
+  - scp stopped_flow.tar.bz2 stopped-flow@hera.physchem.kth.se:~/
