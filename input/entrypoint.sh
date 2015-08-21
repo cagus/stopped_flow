@@ -6,6 +6,5 @@
 addgroup --gid $HOST_GID mygroup
 adduser --disabled-password --uid $HOST_UID --gid $HOST_GID --gecos '' myuser
 su -m myuser -c ./build.sh
-./build.sh
 BUILD_EXIT=$?
 exit $BUILD_EXIT
