@@ -20,3 +20,6 @@ För att generara pdf på Ubuntu:
 3. Visa resultat ::
 
    $ xdg-open output/main.pdf; xdg-open output/supp_mater.pdf
+
+
+Senaste versionen finns `här <http://hera.physchem.kth.se/~stopped_flow/>`_.
