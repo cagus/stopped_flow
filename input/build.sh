@@ -36,7 +36,7 @@ for d in $DIRS; do
     fi
 done
 
-TGTS=(main.tex supp_mater.tex *.bib Variables.ini)
+TGTS=(main.tex supp_mater.tex *.bib Variables.ini Targets.ini render_bib.py)
 echo "${TGTS[@]}"
 for t in "${TGTS[@]}"; do
     tgt=$BUILDDIR/$t
@@ -48,6 +48,7 @@ if [[ ! -L $BUILDDIR/Makefile ]]; then
     ln -s ../input/_Makefile $BUILDDIR/Makefile 
 fi
 cd $BUILDDIR
+make main.bib
 make
 biber main
 make

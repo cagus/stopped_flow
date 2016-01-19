@@ -13,6 +13,9 @@ _analytic.pyx: render_code.py _analytic_template.pyx
 _analytic.so: setup.py _analytic.pyx analytic.c
 	python $< build_ext --inplace
 
+variables.tex: variables.py $(DEPENDS)
+	python $< >$@
+
 rev_unary_1.tex: rev_unary.py $(DEPENDS)
 	python $<
 rev_unary_rate.tex: rev_unary.py $(DEPENDS)
