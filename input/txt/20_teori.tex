@@ -8,23 +8,23 @@ hastighetsuttrycken.
 
 \subsection{Hastighetsuttryck}
 För läslighets skull betecknar vi från och med nu [\ce{FeSCN^2+}],
-[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $x$, $y$ och $z$ och de
-initiala koncentrationerna med respektive versaler $X$, $Y$ och $Z$. Vi
-kan då beskriva koncentrationerna vid tiden $t$ enligt:
+[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $\SYMx$, $\SYMy$ och $\SYMz$ och de
+initiala koncentrationerna med respektive versaler $\SYMX$, $\SYMY$ och $\SYMZ$. Vi
+kan då beskriva koncentrationerna vid tiden $\SYMt$ enligt:
 
 \input{tab/conc}
 
 Idealt har vi ingen produkt innan blandning av reaktantlösningarna
-($X=0$). För läslighets skull baserar vi följande härledningar på det
+($\SYMX=0$). För läslighets skull baserar vi följande härledningar på det
 antagandet:
 
 \input{tab/conc2}
 
-Det är från dataserier för $x(t)$ (eller snarare absorbans mot tid) som
-ni genom kurvanpassning bestämmer $k_f$ för varje kombination av
+Det är från dataserier för $\SYMx(t)$ (eller snarare absorbans mot tid) som
+ni genom kurvanpassning bestämmer $\SYMkf$ för varje kombination av
 temperatur och jonstyrka.
 
-Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
+Man kan härleda ett explicit analytiskt uttryck för $\SYMx(t)$ genom att
 integrera den ordinära differentialekvation som beskriver dess
 tidsberoende. Reaktionen är av andra ordningen och reversibel, men vi kan
 välja att beskriva denna med olika grad av förenklingar:
@@ -61,17 +61,17 @@ uttryck för tidsutvecklingen av [\ce{SCN-}]:
 
 \begin{equation}
   \label{eq:scn-pseudo-rate}
-  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
+  \frac{d[\ce{SCN-}]}{dt} = -\SYMkf[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
 \end{equation}
 
-där $k' = k_f[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
+där $k' = \SYMkf[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
 hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning:
 
 \input{derivations/irrev_unary_1}
 
-Notera att vi bytte symbol för integranden från $x$ till $\chi$ för att
+Notera att vi bytte symbol för integranden från $\SYMx$ till $\SYMchi$ för att
 undvika förväxling med den övre integrationsgränsen (detsamma gäller
-bytet från $t$ till $\tau$).
+bytet från $\SYMt$ till $\SYMtau$).
 
 \subsubsection{Reversibel pseudo första ordningens reaktion}
 \label{sec:rev_unary}
@@ -80,7 +80,7 @@ bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
 konstant). Härledningen är analog och blir:
 \input{derivations/rev_unary_1}
 
-Kom ihåg att $k_f$ och $k_b$ inte är oberoende av varandra då de skall reproducera
+Kom ihåg att $\SYMkf$ och $\SYMkb$ inte är oberoende av varandra då de skall reproducera
 stabilitetskonstanten i \cref{eq:equilibrium}.
 % Notera att funktionsformen, $f(x) = C_1(1-e^{C_2x})$, är densamma
 % som i \cref{sec:irrev_unary}.
@@ -111,7 +111,7 @@ Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
 
-Notera att vi antog $4ac < b^2$ vilket går att visa, men lämnas som en
+Notera att vi antog $4\SYMa\SYMc < \SYMb^2$ vilket går att visa, men lämnas som en
 övning för läsaren.
 % Notera att funktionsformen, $f(x) = C_1\frac{1 - e^{C_2x}}{C_3 -
 %   e^{C_2x}}$, är densamma som i \cref{sec:irrev_binary}.

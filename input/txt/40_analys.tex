@@ -4,12 +4,12 @@ Skriv ett skript (i exmepelvis Matlab, se exempelskript i
 \cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck till
 era rådata. Notera att vi inte tillåter att ni kopierar in rådata från
 textfilerna in i koden (det försvårar utskrift och försämrar
-överskådligheten). Gör passningen både med och utan antagende om
-irreversibilitet samt ``pseudo första ordningens'' kinetik (totalt 4
-fall) för minst en dataserie. Funktionsuttryck får ni från härledningarna
+överskådligheten). För en passning skall ni undersöka effekten av
+antagendet om irreversibilitet samt ``pseudo första ordningens'' kinetik
+(totalt 4 fall). Funktionsuttryck får ni från härledningarna
 i \cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}.
 När ni utvärderat vilket funktionsuttryck som ger lägst osäkerhet i
-bestämningen av $k_f$ kan ni använda det för analysen av övriga
+bestämningen av $\SYMkf$ kan ni använda det för analysen av övriga
 mätserier.
 
 För varje kombination av $T$ och $I$ kommer ni göra $n$ replikat. För
@@ -63,7 +63,7 @@ Nedan följer några tips:
   blir för tidskrävande för denna laboration.
 \item Initialgissning för hastighetskonstanten kan ni uppskatta visuellt
   från en plot av absorbans mot tid under antagandet irreversibel pseduo
-  första ordningens reaktion. Då gäller: $z(t) = Ze^{-k' t} \implies k'
+  första ordningens reaktion. Då gäller: $\SYMz(\SYMt) = \SYMZ e^{-k' \SYMt} \implies k'
   \approx 1/T_{0.37}$ -- där $T_{0.37}$ är tiden det tar för 63\% av den
   begränsande reaktanten att försvinna.
 
