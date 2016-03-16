@@ -17,9 +17,13 @@ För att generara pdf på Ubuntu:
    $ ./generate_output.sh
 
 
-3. Visa resultat ::
+3. Visa resultat: ::
 
-   $ xdg-open output/main.pdf; xdg-open output/supp_mater.pdf
+   $ xdg-open out_0/main.pdf; xdg-open out_0/supp_mater.pdf
+
+4. Generera alternativ version (0-3): ::
+
+   $ ./generate_output.sh 1
 
 
 Senaste versionen finns `här <http://hera.physchem.kth.se/~stopped_flow/>`_.

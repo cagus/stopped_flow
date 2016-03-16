@@ -1,4 +1,5 @@
 output/
+out_*/
 */*/*.pyc
 */*/*.ipynb_checkpoints
 

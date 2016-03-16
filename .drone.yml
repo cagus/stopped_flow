@@ -2,11 +2,10 @@ build:
   image: bjodah/bjodahimg:v1.1
   commands:
     - cd ./input
-    - ./build.sh
+    - LABBPEK_IDX=2 ./build.sh
     - cd -
-    - mkdir deploy
-    - echo "This folder is emptied by CI script" >deploy/WARNING.txt
-    - cp output/main.pdf output/supp_mater.pdf deploy/
+    - mkdir -p deploy/$CI_BRANCH
+    - cp input/main.pdf input/supp_mater.pdf deploy/$CI_BRANCH
 
 deploy:
 
@@ -17,4 +16,4 @@ deploy:
     source: deploy/
     target: ~/public_html
     recursive: true
-    delete: true
+    delete: false
