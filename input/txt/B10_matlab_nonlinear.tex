@@ -8,9 +8,6 @@ ickelinjär kurvanpassning. Ekvationen som passas i exemplet är helt godtycklig
   f(x) = a\frac{x^b+1}{x^{b+1}+1}
 \end{equation}
 
-Vi genererar brusiga data  (se \cref{fig:matlab-nonlinear}) för att
-utmana vår passningsrutinen.
-
 \begin{figure}
   \centering
   \includegraphics[scale=0.5]{matlab/passning.png}
@@ -18,13 +15,54 @@ utmana vår passningsrutinen.
   \label{fig:matlab-nonlinear}
 \end{figure}
 
-Sedan optimerar vi (utifrån en startgissning) värden på $a$ respektive
-$b$, först med Matlabs funktion {\tt fit} (se \cref{sec:matlab-fit})
-och sedan en alternativ version med Matlabs funktion {\tt fsolve} (se
-\cref{sec:matlab-fsolve}).
+Vi genererar data med en relativt hög brusnivå (se
+\cref{fig:matlab-nonlinear}) för att utmana passningsrutinen. Därefter
+optimerar vi (utifrån en startgissning) värden på $a$ respektive $b$,
+först med Matlabs funktion {\tt fsolve} (se \cref{sec:matlab-fsolve}) och
+sedan en alternativ version med Matlabs funktion {\tt fit} (se
+\cref{sec:matlab-fit}).
 
-\subsection{Kod baserat på {\tt fit}}
+\subsection{Kod baserad på ``fsolve''}
+\label{sec:matlab-fsolve}
+{\tt fsolve} kan ansättas att försöka lösa en ekvation för
+residualerna för vår passning ($\vec{r}(\vec{x}) = \vec{0}$).
+
+\begin{equation}
+  \label{eq:ex}
+  r_i(x_i) = a\frac{x_i^b+1}{x_i^{b+1}+1} - y_i
+\end{equation}
+
+\matlabcode{matlab/passning2.m}
+
+\begin{terminaloutput}
+>> passning2
+Warning: Trust-region-dogleg algorithm of FSOLVE cannot handle non-square systems; using Levenberg-Marquardt algorithm instead. 
+> In fsolve (line 287)
+  In passning2 (line 43) 
+
+No solution found.
+
+fsolve stopped because the last step was ineffective. However, the vector of function
+values is not near zero, as measured by the default value of the function tolerance. 
+
+<stopping criteria details>
+
+
+result =
+
+    2.0015    2.9760
+\end{terminaloutput}
+{\tt fsolve} föreslår alltså värden för $a$ och $b$ nära våra valda
+korrekta värden ($\alpha$ och $\beta$).
+
+\subsection{Kod baserad på {\tt fit}}
 \label{sec:matlab-fit}
+Metoden med {\tt fsolve} ger inga konfidensintervall, 
+samt varnar för det mesta (om inställningar inte
+görs aktivt) att efterfrågade toleranser inte kunde uppnås.
+{\tt fit} ger likvärdiga passningar men ger både konfidensintervall och
+har mer ändamålsenliga varningar. Använd den metod ni är mest bekväma med
+-- antingen {\tt fsolve} eller {\tt fit}.
 
 \matlabcode{matlab/passning.m}
 
@@ -60,38 +98,6 @@ den brusiga kurvan i \cref{fig:matlab-nonlinear} kunde vi t. ex. från
 skärningspunkten med y-axeln satt startgissningen för $a$ någonstans
 kring 2 och sedan löst ut $b$ ur en approximativ version av \cref{eq:ex} för
 $f(4) \approx 0.5$.
-
-\subsection{Kod baserat på ``fsolve''}
-\label{sec:matlab-fsolve}
-Ett alternativ till att använda funktionen {\tt fit} är att använda {\tt
-  fsolve} vilket kan ansättas att försöka lösa en ekvation för
-residualerna för vår passning:
-
-\matlabcode{matlab/passning2.m}
-
-\begin{terminaloutput}
->> passning2
-Warning: Trust-region-dogleg algorithm of FSOLVE cannot handle non-square systems; using Levenberg-Marquardt algorithm instead. 
-> In fsolve (line 287)
-  In passning2 (line 43) 
-
-No solution found.
-
-fsolve stopped because the last step was ineffective. However, the vector of function
-values is not near zero, as measured by the default value of the function tolerance. 
-
-<stopping criteria details>
-
-
-result =
-
-    2.0015    2.9760
-\end{terminaloutput}
-
-metoden med {\tt fsolve} producerar likvärdiga passningar men ger
-inga konfidensintervall, samt varnar för det mesta (om inställningar inte
-görs aktivt) att efterfrågade toleranser inte kunde uppnås. Använd den
-metod ni är mest bekväma med -- antingen {\tt fsolve} eller {\tt fit}.
 
 %%% Local Variables:
 %%% mode: latex
