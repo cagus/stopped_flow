@@ -1,23 +1,49 @@
 \input{inc/preamble_early}
-\usepackage{xr-hyper} % needs to be loaded before hyperref
+\usepackage{xr-hyper} % Needs to be loaded before hyperref
 \input{inc/preamble_mid}
-\addbibresource{stopped_flow.bib}
+\input{derivations/symbnames}
+\addbibresource{main.bib}
 
 \externaldocument{supp_mater}
 
+\usepackage[absolute,overlay]{textpos}
+
 %% Global Last Commands
-\usepackage[capitalise,noabbrev,swedish]{cleveref} % <--- Needs to be loaded late (see doc)
+\usepackage[capitalise,noabbrev,swedish]{cleveref} % Needs to be loaded late (see doc)
 
 \providecommand{\projecttitle}{Laborationshandledning -- Stopped flow \\
 KD1080}
 \input{inc/set_title_author}
 
-
 \begin{document}
- 
-  \begin{titlepage}
-    \maketitle
-  \end{titlepage}
+
+\makeatletter
+    \begin{titlepage}
+\begin{textblock*}{2cm}(12mm,12mm) % {block width} (coords)
+\includegraphics[width=2cm]{fig/kth.pdf}
+\end{textblock*}
+      % \begin{picture}(1,1)
+      %   \put(0,0){\hbox{\includegraphics[width=2cm]{fig/kth.pdf}}}
+      % \end{picture}
+      \begin{center}
+        ~\\[20ex]
+            {\LARGE \bfseries \sffamily \@title }\\[4ex]
+            {\Large  \@author}\\[4ex]
+            \@date \\[14ex]
+            \includegraphics[width=4cm]{fig/setup.jpg}
+        \end{center}
+    \end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+%Add content for page two here (useful for two-sided printing)
+\thispagestyle{empty}
+\newpage
+
+% \maketitle
+\setcounter{page}{1} %Start the actually document on page 1
+
   \tableofcontents
   \listoffigures
   \listoftables

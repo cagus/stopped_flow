@@ -1,32 +1,45 @@
 \section{Exempelskript för viktad minsta-kvadrat anpassning}
 \label{sec:matlab-wls}
-Nedan finner ni ett Matlab skript ({\tt wls.m}) för viktad
-minsta-kvadrat anspassning av en rät linje till en serie punkter med
+Nedan finner ni två Matlab skript ({\tt wls.m}) för viktad minsta-kvadrat 
+(weighted least square) anspassning av en rät linje till en serie punkter med
 uppskattad osäkerhet för varje separat punkt.
+
+\subsection{Kod baserad på manuell lösning}
+
+\matlabcode{matlab/wls_manual.m}
+
+\begin{terminaloutput}
+>> wls_manual
+
+c_ols =
+
+   2.7426
+   3.0403
+
+c_wls =
+
+   2.3613
+   3.2790
+
+wrmsd_ols =  1.4769
+wrmsd_wls =  0.82180
+
+\end{terminaloutput}
+
+
+\subsection{Kod baserad på ``fit''}
+Ett alternativ till att ställa upp matrisekvationerna för WLS
+är att använda 'poly1' i fit:
 
 \matlabcode{matlab/wls.m}
 
 \begin{terminaloutput}
 >> wls
 
-k =
-
-    3.1619
-
-
-m =
-
-    2.6406
-
-
-dk =
-
-    0.2415
-
-
-dm =
-
-    1.1118
+k = 3.2790
+m =  2.3613
+dk = 0.2285
+dm = 0.9660
 \end{terminaloutput}
 
 Notera att vi även tog fram nya felgränser (en standardavvikelse vilket

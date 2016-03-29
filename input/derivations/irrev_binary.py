@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from common import symbs
+from common import get_symbs
 from derivations import as_align_env
 from sympy import symbols, Eq, Derivative, Integral, log, solve, exp, ccode
 
-globals().update(symbs) # see common.py: x, Y, Z, k_f, ...
+globals().update(get_symbs()) # see common.py: x, Y, Z, k_f, ...
 
 eqs = []
 

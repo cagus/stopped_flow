@@ -1,8 +1,19 @@
-image: bjodah/dockerfile-bjodah-scicomp
-git:
-    path: github.com/bjodah/chemreac-stiffness
-script:
-  - cd ./input
-  - ./build.sh
-  - cd ../output
-  - scp main.pdf supp_mater.pdf stopped-flow@hera.physchem.kth.se:~/
+build:
+  image: bjodah/bjodahimg:v1.1
+  commands:
+    - cd ./input
+    - LABBPEK_IDX=2 ./build.sh
+    - cd -
+    - mkdir -p deploy/$CI_BRANCH
+    - cp input/main.pdf input/supp_mater.pdf deploy/$CI_BRANCH
+
+deploy:
+
+  rsync:
+    host: hera.physchem.kth.se
+    port: 22
+    user: stopped_flow
+    source: deploy/
+    target: ~/public_html
+    recursive: true
+    delete: false

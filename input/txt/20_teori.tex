@@ -7,24 +7,24 @@ koncentrationernas tidsberoende för olika grad av förenkling av
 hastighetsuttrycken.
 
 \subsection{Hastighetsuttryck}
-För läslighets skull betecknar vi från och med nu [\ce{FeSCN^2+}],
-[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $x$, $y$ och $z$ och de
-initiala koncentrationerna med respektive versaler $X$, $Y$ och $Z$. Vi
-kan då beskriva koncentrationerna vid tiden $t$ enligt:
+För läslighetens skull betecknar vi från och med nu [\ce{FeSCN^2+}],
+[\ce{Fe^3+}] och [\ce{SCN-}] med variablerna $\SYMx$, $\SYMy$ och $\SYMz$ och de
+initiala koncentrationerna med respektive versaler $\SYMX$, $\SYMY$ och $\SYMZ$. Vi
+kan då beskriva koncentrationerna vid tiden $\SYMt$ enligt:
 
 \input{tab/conc}
 
 Idealt har vi ingen produkt innan blandning av reaktantlösningarna
-($X=0$). För läslighets skull baserar vi följande härledningar på det
+($\SYMX=0$). För läslighetens skull baserar vi följande härledningar på det
 antagandet:
 
 \input{tab/conc2}
 
-Det är från dataserier för $x(t)$ (eller snarare absorbans mot tid) som
-ni genom kurvanpassning bestämmer $k_f$ för varje kombination av
+Det är från dataserier för $\SYMx(t)$ (eller snarare absorbans mot tid) som
+ni genom kurvanpassning bestämmer $\SYMkf$ för varje kombination av
 temperatur och jonstyrka.
 
-Man kan härleda ett explicit analytiskt uttryck för $x(t)$ genom att
+Man kan härleda ett explicit analytiskt uttryck för $\SYMx(t)$ genom att
 integrera den ordinära differentialekvation som beskriver dess
 tidsberoende. Reaktionen är av andra ordningen och reversibel, men vi kan
 välja att beskriva denna med olika grad av förenklingar:
@@ -38,7 +38,7 @@ välja att beskriva denna med olika grad av förenklingar:
   Ifall initialkoncentrationen av en reaktant är mycket större än den andra,
   kan reaktanten i överskott approximeras som konstant under reaktionens
   gång. Man bestämmer då istället den så kallade ``pseudo första ordningens''
-  hastighets konstant som implicit inkluderar den högre koncentrationen.
+  hastighetskonstant som implicit inkluderar den högre koncentrationen.
 \end{description}
 
 \input{tab/rate_eqs}
@@ -61,17 +61,17 @@ uttryck för tidsutvecklingen av [\ce{SCN-}]:
 
 \begin{equation}
   \label{eq:scn-pseudo-rate}
-  \frac{d[\ce{SCN-}]}{dt} = -k_f[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
+  \frac{d[\ce{SCN-}]}{dt} = -\SYMkf[\ce{Fe^3+}]_0[\ce{SCN-}] = -k'[\ce{SCN-}]
 \end{equation}
 
-där $k' = k_f[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
+där $k' = \SYMkf[\ce{Fe^3+}]_0$ och kallas för ``pseudo första ordningens
 hastighetskonstant''. \cref{eq:scn-pseudo-rate} har en enkel lösning:
 
 \input{derivations/irrev_unary_1}
 
-Notera att vi bytte symbol för integranden från $x$ till $\chi$ för att
+Notera att vi bytte symbol för integranden från $\SYMx$ till $\SYMchi$ för att
 undvika förväxling med den övre integrationsgränsen (detsamma gäller
-bytet från $t$ till $\tau$).
+bytet från $\SYMt$ till $\SYMtau$).
 
 \subsubsection{Reversibel pseudo första ordningens reaktion}
 \label{sec:rev_unary}
@@ -80,7 +80,7 @@ bakåtreaktionen (vi betraktar fortfarande [\ce{Fe^3+}] som
 konstant). Härledningen är analog och blir:
 \input{derivations/rev_unary_1}
 
-Kom ihåg att $k_f$ och $k_b$ inte är oberoende av varandra då de skall reproducera
+Kom ihåg att $\SYMkf$ och $\SYMkb$ inte är oberoende av varandra då de skall reproducera
 stabilitetskonstanten i \cref{eq:equilibrium}.
 % Notera att funktionsformen, $f(x) = C_1(1-e^{C_2x})$, är densamma
 % som i \cref{sec:irrev_unary}.
@@ -105,13 +105,13 @@ vi ser att det detta explicita uttryck inte längre kan linjäriseras
 vilket gör en regression mer avancerad.
 
 \subsubsection{Reversibel bimolekylär kinetik}
-Slutligen härleder vi den mest korrekta behandlingen av vårt kinetikproblem.
+Slutligen härleder vi den mest detaljerade beskrivningen av vårt kinetikproblem.
 \label{sec:rev_binary}
 \input{derivations/rev_binary_1}
 \input{derivations/rev_binary_2}
 \input{derivations/rev_binary_3}
 
-Notera att vi antog $4ac < b^2$ vilket går att visa, men lämnas som en
+Notera att vi antog $4\SYMa\SYMc < \SYMb^2$ vilket går att visa, men lämnas som en
 övning för läsaren.
 % Notera att funktionsformen, $f(x) = C_1\frac{1 - e^{C_2x}}{C_3 -
 %   e^{C_2x}}$, är densamma som i \cref{sec:irrev_binary}.
@@ -121,10 +121,15 @@ Notera att vi antog $4ac < b^2$ vilket går att visa, men lämnas som en
 Hastighetskonstanter är verkliga konstanter för en given temperatur och
 jonstyrka. I era försök kommer dessa parametrar att variera och det är
 upp till er att behandla dessa effekter enligt någon av de modeller som
-behandlats i kursen.
+behandlas i kursen.
 
 \subsection{Jonstyrkeeffekter}
-Jonstyrkan för en lösning beräknas enligt:
+Jonstyrkan\footnote{Jonstyrka som begrepp introducerades av
+  G. N. Lewis och M. Randall 1921, detta var en rent empirisk parameter
+  som först i efterhand fick en teoretisk förklaring av Debye \&
+  H\"uckel, den som är intresserad av detaljerna kan med fördel läsa
+  Ref.\cite{sastre_de_vicente_concept_2004}
+} för en lösning beräknas enligt:
 
 \begin{equation}
   \label{eq:ionic-strength}
@@ -185,8 +190,7 @@ gränslag\footnote{
   Debye-Hückels gränslag är endast giltig i mycket utspädda lösningar ($I
   < \SI{1e-3}{\mole\per\kg}$) men för att hålla komplexiteten av analysen
   på en rimlig nivå använder vi ändå detta uttryck i denna laboration.
-}
-(endast giltig i mycket utspädda lösningar):
+}:
 
 \begin{equation}
   \label{eq:activity}
@@ -206,16 +210,19 @@ $F$ är Faradays konstant, $N_A$ Avogadros tal, $\rho$ lösningsmedlets
 densitet, $b^{\plimsoll}$ standard-molaliteten, $\varepsilon_r$ den
 relativa permittiviteten för mediumet, $\varepsilon_0$ permittiviteten för
 vakuum, $R$ allmänna gaskonstanten och $T$ är temperaturen. För vatten vid
-\SI{298.15}{\kelvin} är $A_{DH} = 0.509$.
+\SI{298.15}{\kelvin} är $A_{DH} = 0.510$.
 
 Logaritmering av \cref{eq:ts-conc} och insättning av \cref{eq:activity}
 ger:
 
 \begin{align}
-  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}(\frac{[A][B]}{(c^\plimsoll)^2}K) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A_{DH}
-                  \sqrt{\frac{I}{I^\plimsoll}} \\
+  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}\left(
+    \frac{[A][B]}{(c^\plimsoll)^2}K \right) - \left(z_A^2 + z_B^2 - (z_A+z_B)^2\right) A_{DH}
+    \sqrt{\frac{I}{I^\plimsoll}} \\
   \label{eq:log-ts-corr}
-  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}(\frac{[A][B]}{(c^\plimsoll)^2}K) + 2z_Az_BA_{DH}\sqrt{\frac{I}{I^\plimsoll}}
+  \log_{10}([\ce{TS}] / c^\plimsoll) &= \log_{10}
+    \left(\frac{[A][B]}{(c^\plimsoll)^2}K
+    \right) + 2z_Az_BA_{DH}\sqrt{\frac{I}{I^\plimsoll}}
 \end{align}
 
 där vi antagit att laddningen för vårt transition state är summan av
@@ -258,10 +265,10 @@ monotiocyanatojärn(III). I verkligheten förekommer även komplexen givna i
             &=& 3.82(9) \\
     \ce{Fe^3+} & + & \ce{H2O} & $\rightleftharpoons $ &
         \ce{FeOH^2+} & + & \ce{H+} & $\log_{10}(\beta)$\cite{peintler_improved_2000}
-            &=& $\num{-2.774}$ \\
+            &=& $\num{-2.774 +- 0.005}$ \\
     \ce{2Fe^3+} & + & \ce{2H2O} & $\rightleftharpoons $ &
         \ce{Fe2(OH)2^4+} & + & \ce{2H+} & $\log_{10}(\beta)$\cite{peintler_improved_2000}
-            &=&$\num{-2.812}$ \\
+            &=&$\num{-2.81 +- 0.02}$ \\
      &  & \ce{SCNH} & $\rightleftharpoons $ &
         \ce{SCN-} & + & \ce{H+} & pKa\cite{chiang_determination_2000} &=&$\num{-1.28}$
   \end{tabular}

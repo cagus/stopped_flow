@@ -1,8 +1,9 @@
 output/
-*/*/*.pyc
-*/*/*.ipynb_checkpoints
+out_*/
+**.pyc
+**.ipynb_checkpoints
 
-*/.~lock.*
+**/.~lock.*
 
 .cache/
 .ipynb_checkpoints/
