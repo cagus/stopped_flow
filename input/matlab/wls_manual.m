@@ -9,7 +9,7 @@ s2 = [1.3 0.9 0.6 13.4 2.2]';
 % Vi kan plotta punkterna med osäkerheten utritad
 % errorbar(x, y, s2.^0.5, 'o');
 
-% Låt oss först göra en oviktad MKV passning:
+% Låt oss först göra en oviktad minsta-kvadrat-anpassning:
 % A'A c = A'y
 A = [ones(size(x)), x];
 c_ols = A\y  % Matlab löser med hjälp av QR faktorisering

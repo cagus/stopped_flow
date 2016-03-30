@@ -3,10 +3,11 @@
 Skriv ett skript (i exmepelvis Matlab, se exempelskript i
 \cref{sec:matlab-nonlinear} i Bilaga) för att passa funktionsuttryck till
 era rådata. Notera att vi inte tillåter att ni kopierar in rådata från
-textfilerna in i koden (det försvårar utskrift och försämrar
-överskådligheten). För en dataserie skall ni undersöka effekten av
-antagendet om irreversibilitet. Funktionsuttryck får ni från härledningarna
-i \cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}.
+textfilerna i någon annan fil (det försvårar utskrift och försämrar
+överskådligheten), utan filerna skall läsas programmatiskt. För en
+dataserie skall ni undersöka effekten av antagendet om
+irreversibilitet. Funktionsuttryck får ni från härledningarna i
+\cref{sec:irrev_unary,sec:rev_unary,sec:irrev_binary,sec:rev_binary}.
 När ni utvärderat vilket funktionsuttryck som ger lägst osäkerhet i
 bestämningen av $\SYMkf$ kan ni använda det för analysen av övriga
 mätserier.
@@ -64,7 +65,9 @@ Nedan följer några tips:
   från en plot av absorbans mot tid under antagandet irreversibel pseduo
   första ordningens reaktion. Då gäller: $\SYMz(\SYMt) = \SYMZ e^{-k' \SYMt} \implies k'
   \approx 1/T_{0.37}$ -- där $T_{0.37}$ är tiden det tar för 63\% av den
-  begränsande reaktanten att försvinna.
+  begränsande reaktanten att försvinna.\footnote{$T_{0.37}$ kan verka
+    kryptisk, den kan ses som en analog till halveringstiden $T_{1/2}$ i
+  $f(x)=2^{-\frac{t}{T_{1/2}}}$ men då basen är $e$ skriver vi uttrycket som $g(x)=e^{-\frac{t}{T_{0.37}}}$.}
 
 % \item Hastighetsutrycket för pseudo första ordningens reaktion kan
 %   linjäriseras genom att göra passningen mot logaritmen av

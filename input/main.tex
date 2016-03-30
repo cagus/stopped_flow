@@ -6,8 +6,6 @@
 
 \externaldocument{supp_mater}
 
-\usepackage[absolute,overlay]{textpos}
-
 %% Global Last Commands
 \usepackage[capitalise,noabbrev,swedish]{cleveref} % Needs to be loaded late (see doc)
 
@@ -17,32 +15,7 @@ KD1080}
 
 \begin{document}
 
-\makeatletter
-    \begin{titlepage}
-\begin{textblock*}{2cm}(12mm,12mm) % {block width} (coords)
-\includegraphics[width=2cm]{fig/kth.pdf}
-\end{textblock*}
-      % \begin{picture}(1,1)
-      %   \put(0,0){\hbox{\includegraphics[width=2cm]{fig/kth.pdf}}}
-      % \end{picture}
-      \begin{center}
-        ~\\[20ex]
-            {\LARGE \bfseries \sffamily \@title }\\[4ex]
-            {\Large  \@author}\\[4ex]
-            \@date \\[14ex]
-            \includegraphics[width=4cm]{fig/setup.jpg}
-        \end{center}
-    \end{titlepage}
-\makeatother
-\thispagestyle{empty}
-\newpage
-
-%Add content for page two here (useful for two-sided printing)
-\thispagestyle{empty}
-\newpage
-
-% \maketitle
-\setcounter{page}{1} %Start the actually document on page 1
+  \input{inc/kth_titlepage}
 
   \tableofcontents
   \listoffigures
