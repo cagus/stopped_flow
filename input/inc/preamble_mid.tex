@@ -20,7 +20,7 @@
     \usepackage[colorlinks,unicode=True]{hyperref}
   \fi
 \fi
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{subfig}
 
 \usepackage[swedish]{babel}
@@ -28,13 +28,15 @@
 
 \usepackage{booktabs} % <--- This is the way to do it if you ask me.
 
-\usepackage{authblk}
+\usepackage[absolute,overlay]{textpos} % textblock (see inc/kth_titlepage)
 
+\usepackage{authblk}
 \renewcommand\Authsep{, }
 \renewcommand\Authand{ och }
 \renewcommand\Authands{, och }
 %\usepackage[symbol]{footmisc} % \cite => numbers
 \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand*{\thefootnote}{$\star$}
 \usepackage[style=chem-acs,doi,autocite=superscript,pageranges=false,backend=biber]{biblatex}
 \AtEveryBibitem{\clearfield{month}} % Don't put "Jan. 2000" in references
 \AtEveryCitekey{\clearfield{month}} % http://tex.stackexchange.com/questions/55780
@@ -60,6 +62,8 @@
   pdfstartview={FitH}, %
   pdfcreator={LaTeX with hyperref package}, %
   citecolor=teal, % See xcolor package documentation
-  linkcolor=red, %
+  linkcolor=Maroon, %
   urlcolor=blue, %
 }%
+
+

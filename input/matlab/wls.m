@@ -9,7 +9,7 @@ s2 = [1.3 0.9 0.6 13.4 2.2];
 % Vi kan plotta punkterna med osäkerheten utritad
 errorbar(x, y, s2.^0.5, 'o')
 
-% Nu genomför vi en s.k. "viktad" minsta kvadrat anpassning:
+% Nu genomför vi en s.k. "viktad" minsta-kvadrat-anpassning:
 % http://se.mathworks.com/help/curvefit/fit.html
 f = fittype('poly1');  % Linjär ekvation (2 parametrar)
 options = fitoptions('poly1');
